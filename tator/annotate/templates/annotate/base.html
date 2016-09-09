@@ -8,13 +8,21 @@
 		<meta charset="utf-8">
 		<title>{% block title %}Annotator{% endblock %}</title>
 		<link href="{% static 'annotate/bs/css/bootstrap.min.css' %}" rel='stylesheet' type='text/css'>
-		<link href="{% static 'annotate/style.css' %}" rel='stylesheet' type='text/css'>
+		<link href="{% static 'annotate/annotate.css' %}" rel='stylesheet' type='text/css'>
 		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     </head>
 
     <body>
-        <div id="content">
-            {% block content %}{% endblock %}
+        <div id="content" class="container">
+	        <div class="row">
+                <div class="col-sm-8 col-centered">
+                    {% if request.user.is_authenticated %}
+                    <div id="login-link"><a href="/logout">Logout</a></div>
+                    {% endif %}
+                    <div class="clear-float"></div>
+                    {% block content %}{% endblock %}
+                </div>
+            </div>
         </div>
     </body>
     

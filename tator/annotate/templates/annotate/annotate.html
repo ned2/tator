@@ -1,0 +1,37 @@
+{% extends "annotate/base.html" %}
+{% load bootstrap3 %}
+
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+
+{# Display django.contrib.messages as Bootstrap alerts #}
+{% bootstrap_messages %}
+
+{% block content %}
+
+<div id="query-container" class="row">
+    <div class="query-label">Query:</div>
+    <div class="query-text">{{ query }}</div>
+</div>
+
+<form id="annotation-form" action="{{ request.get_full_path }}" method="post" class="form">
+    {% csrf_token %}
+    {% bootstrap_form form %}
+    {% buttons %}
+    <button type="submit" class="btn btn-primary">
+        {% bootstrap_icon "star" %} Submit
+    </button>
+
+    {% endbuttons %}
+</form>
+
+<form id="skip-form" action="{{ request.get_full_path }}" method="post" class="form">
+    {% csrf_token %}
+    <p>If the text is completely unintelligible as a query, you may skip it.</p>
+    <input type="hidden" name="query" value="{{ form.query.value }}">
+    <button id="skip-button" type="submit" name="skip" class="btn btn-primary">
+        {% bootstrap_icon "star" %} Skip
+    </button>
+</form>
+{% endblock %}
+

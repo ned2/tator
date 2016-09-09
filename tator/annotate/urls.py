@@ -5,6 +5,7 @@ from .views import AnnotateView, index
 
 urlpatterns = [
     url(r'^$', index, name='index'),
-    url(r'^annotate/', AnnotateView.as_view(), name='annotate'),
-    url(r'^login/$', auth_views.login, {'template_name': 'annotate/login.html'}),
+    url(r'^annotate/$', AnnotateView.as_view(), name='annotate'),
+    url(r'^logout/$', auth_views.logout_then_login, name='logout'),
+    url(r'^login/$', auth_views.login, {'template_name': 'annotate/login.html'}, name='login'),
 ]

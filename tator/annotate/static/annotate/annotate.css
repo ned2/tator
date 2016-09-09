@@ -1,0 +1,51 @@
+.clear-float {clear: both}
+
+.col-centered {
+    float: none;
+    margin: 0 auto;
+}
+
+#login-link {float: right}
+#login-form {
+    margin: 0 auto;
+    margin-left: 5em;
+    width: 40%;
+}
+
+#query-container {
+    background-color: thistle;
+    padding: 0.5em;
+    margin: 2em 0;
+}
+
+.query-label {
+    display: inline-block;
+    vertical-align: middle;
+    font-weight: 600;
+    font-size: 2em;
+}
+
+.query-text {
+    display: inline-block;
+    vertical-align: middle;
+    width: 70%;
+    font-size: 2em;
+    text-align: center;
+    font-family: mono;
+}
+
+.radio label {
+    width: 5em;
+    background-color: lightgrey;
+    padding: 0.7em 2em;
+    border-radius: 5px;
+}
+
+#annotation-form button { margin-top: 1em}
+#annotation-form .radio {
+    display: inline-block;
+    margin-right: 0.5em;
+}
+
+#skip-form {margin-top: 3em}
+

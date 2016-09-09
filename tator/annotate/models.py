@@ -2,20 +2,37 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.core.urlresolvers import reverse
 
+from csv import DictReader
 
 """
 TODO
  -- help strings for Annotation fields
 """
 
+def import_queries(path, limit=None):
+    
+    with open(path) as csvfile:
+        reader = DictReader(csvfile, delimiter=';')
+        for i, row in enumerate(reader):
+            text = row['querystring']
+            count = row['countqstring']
+            if text == '':
+                continue
+            Query.objects.create(text=text, count=count)
+
+            if limit is not None and i == limit - 1:
+                break
+            
+        print("Added {} queries to the database.".format(i))
+
 
 class Query(models.Model):
 
-    class Meta:
-        verbose_name_plural = "queries"
-
     text = models.CharField(max_length=300)
     count = models.IntegerField() 
+
+    class Meta:
+        verbose_name_plural = "queries"
 
     def __str__(self):
         return "Query: '{}'".format(self.text)
@@ -34,14 +51,14 @@ class SkippedAnnotation(models.Model):
         related_name="skipped_annotations",
     )
 
+    class Meta:
+        unique_together = ("query", "user")
+
     def __str__(self):
         return "{} skipped query '{}'".format(self.user, self.query.text)
 
             
 class Annotation(models.Model):
-
-    class Meta:
-        unique_together = ("query", "user")
 
     query = models.ForeignKey(
         Query,
@@ -66,7 +83,8 @@ class Annotation(models.Model):
     RESOURCE_INTERACT = 'RIN'
     RESOURCE_OBTAIN = 'ROB'
     
-    query_type_choices = (
+    QUERY_TYPE_CHOICES = (
+        ('', 'Please select a query type'),
         (NAVIGATIONAL, 'Navigational (eg www.facebook.com)'),
         (INFORMATIONAL_DIRECTED_CLOSED,
          'Informational - Directed - Closed (Learn about topic; single answer)'),
@@ -83,23 +101,29 @@ class Annotation(models.Model):
         (RESOURCE_OBTAIN, 'Resource Obtain'),
     )
 
+    BOOL_CHOICES = ((True, 'Yes'), (False, 'No'))
+
     is_geo = models.BooleanField(
-        verbose_name='isGEO',
-        default=False,
-        help_text=''
+        verbose_name='Is GEO?',
+        choices=BOOL_CHOICES,
+        default=None,
+        help_text='',
     )
     is_geo_impl = models.BooleanField(
-        verbose_name='isGEOImpl',
-        default=False,
+        verbose_name='Is GEO implied?',
+        choices=BOOL_CHOICES,
+        default=None,
         help_text=''
     )
     query_type = models.CharField(
         verbose_name='Query Type',
         max_length=3,
-        choices=query_type_choices,
-        default=NAVIGATIONAL,
+        choices=QUERY_TYPE_CHOICES,
         help_text=''
     )
+
+    class Meta:
+        unique_together = ("query", "user")
 
     def __str__(self):
         return "{} annotated query '{}'".format(self.user, self.query.text)

@@ -84,7 +84,7 @@ class Annotation(models.Model):
     RESOURCE_OBTAIN = 'ROB'
     
     QUERY_TYPE_CHOICES = (
-        ('', 'Please select a query type'),
+        #('', 'Please select a query type'),
         (NAVIGATIONAL, 'Navigational (eg www.facebook.com)'),
         (INFORMATIONAL_DIRECTED_CLOSED,
          'Informational - Directed - Closed (Learn about topic; single answer)'),
@@ -119,7 +119,8 @@ class Annotation(models.Model):
         verbose_name='Query Type',
         max_length=3,
         choices=QUERY_TYPE_CHOICES,
-        help_text=''
+        default=None,
+        help_text='',
     )
 
     class Meta:

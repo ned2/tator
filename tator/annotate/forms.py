@@ -12,6 +12,7 @@ class AnnotationForm(ModelForm):
             'query': HiddenInput(),
             'is_geo': RadioSelect(),
             'is_geo_impl': RadioSelect(),
+            'query_type': RadioSelect(),
         }
 
     def __init__(self, *args, **kwargs):

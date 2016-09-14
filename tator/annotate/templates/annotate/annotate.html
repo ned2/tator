@@ -16,7 +16,35 @@
 
 <form id="annotation-form" action="{{ request.get_full_path }}" method="post" class="form">
     {% csrf_token %}
-    {% bootstrap_form form %}
+    {% bootstrap_form form exclude='query_type' %}
+
+    <div class="form-group">
+        {% bootstrap_label form.fields.query_type.label %}        
+        <div id="id_query_type">
+            {% for val, choice in form.fields.query_type.choices %}
+            {% if forloop.counter == 1 %}
+            <div class="query-category">Navigational</div>
+            {% endif %}
+
+            {% if forloop.counter == 2 %}
+            <div class="query-category">Informational</div>
+            {% endif %}
+            
+            {% if forloop.counter == 8 %}
+            <div class="query-category">Resource</div>
+            {% endif %}
+            
+            <div class="radio">
+                <label for="id_query_type{{ forloop.counter0 }}">
+                    <input id="id_query_type{{ forloop.counter0 }}" name="query_type" type="radio" value="{{ val }}" required>
+                    {{ choice }}
+                    </input>
+                </label>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
     {% buttons %}
     <button type="submit" class="btn btn-primary">
         {% bootstrap_icon "star" %} Submit

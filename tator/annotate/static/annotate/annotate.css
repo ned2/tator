@@ -18,6 +18,8 @@
     margin: 2em 0;
 }
 
+#annotation-form .form-group {}
+
 .query-label {
     display: inline-block;
     vertical-align: middle;
@@ -38,6 +40,10 @@
 label:checked {
     background-color: green;
     font-weight: bold;
+}
+
+.form-group > label {
+    font-size: 1.2em;
 }
 
 .radio label {

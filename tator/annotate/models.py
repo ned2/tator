@@ -87,11 +87,11 @@ class Annotation(models.Model):
         #('', 'Please select a query type'),
         (NAVIGATIONAL, 'Navigational (eg www.facebook.com)'),
         (INFORMATIONAL_DIRECTED_CLOSED,
-         'Informational - Directed - Closed (Learn about topic; single answer)'),
+         'Informational - Directed - Closed'),
         (INFORMATIONAL_DIRECTED_OPEN,
-         'Informational - Directed - Open (Learn about topic; unconstrained depth)'),
+         'Informational - Directed - Open'),
         (INFORMATIONAL_UNDIRECTED,
-         'Informational - Undirected (tell me about; learn everything/anything about topic)'),
+         'Informational - Undirected'),
         (INFORMATIONAL_ADVICE, 'Informational Advice'),
         (INFORMATIONAL_LOCATE, 'Informational Locate'),
         (INFORMATIONAL_LIST, 'Informational List'),
@@ -104,19 +104,19 @@ class Annotation(models.Model):
     BOOL_CHOICES = ((True, 'Yes'), (False, 'No'))
 
     is_geo = models.BooleanField(
-        verbose_name='Is GEO?',
+        verbose_name='1. Can this query be answered with a pin on a map?',
         choices=BOOL_CHOICES,
         default=None,
         help_text='',
     )
     is_geo_impl = models.BooleanField(
-        verbose_name='Is GEO implied?',
+        verbose_name='2. Is the location implicit in the query?',
         choices=BOOL_CHOICES,
         default=None,
         help_text=''
     )
     query_type = models.CharField(
-        verbose_name='Query Type',
+        verbose_name='3. What type of query is this?',
         max_length=3,
         choices=QUERY_TYPE_CHOICES,
         default=None,

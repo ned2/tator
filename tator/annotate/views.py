@@ -10,6 +10,7 @@ from .forms import AnnotationForm
 def index(request):
     return redirect('annotate')
 
+
 @method_decorator(login_required(login_url='/login/'), name='dispatch')
 class AnnotateView(View):
     
@@ -48,5 +49,7 @@ class AnnotateView(View):
             skipped = SkippedAnnotation.objects.filter(user=annotation.user, query=annotation.query)
             skipped.delete()
             return redirect('annotate')
-
-        return render(request, 'annotate/annotate.html', {'form': form})
+        #import ipdb; ipdb.set_trace()
+        query = Query.objects.get(pk=form.data['query'])
+        context = {'form': form, 'query': query.text}
+        return render(request, 'annotate/annotate.html', context)

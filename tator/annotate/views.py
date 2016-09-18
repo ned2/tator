@@ -25,11 +25,9 @@ class AnnotateView(View):
             # User is finished annotating
             return render(request, 'annotate/finished.html', {})
         else:
-            initial = {'user': request.user, 'query': query, 'query_type': "xxxx"}
+            initial = {'user': request.user, 'query': query}
             form = AnnotationForm(initial=initial)
             context = {'form': form, 'query': query.text}
-            #import ipdb; ipdb.set_trace()
-            #pass
             return render(request, 'annotate/annotate.html', context)
 
     def post(self, request):

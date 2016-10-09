@@ -13,7 +13,7 @@
     <div class="col-sm-12">
         <div id="query-container" >
             <div class="query-label">Query:</div>
-            <div class="query-text">{{ query }}</div>
+            <div class="query-text">{{ query.text }}</div>
         </div>
     </div>
 </div>
@@ -52,6 +52,7 @@
 
     <div class="col-md-3">
         {% buttons  %}
+        <input type="hidden" name="query" value="{{ query.pk }}">
         <button type="submit" class="btn btn-primary">
             {% bootstrap_icon "star" %} Submit
         </button>
@@ -64,7 +65,7 @@
 <form id="skip-form" action="{{ request.get_full_path }}" method="post" class="form">
     {% csrf_token %}
     <p>If the text is completely unintelligible as a query, you may skip it.</p>
-    <input type="hidden" name="query" value="{{ form.query.value }}">
+    <input type="hidden" name="query" value="{{ query.pk }}">
     <button id="skip-button" type="submit" name="skip" class="btn btn-primary">
         {% bootstrap_icon "star" %} Skip
     </button>

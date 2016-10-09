@@ -1,8 +1,6 @@
 from django.contrib import admin
 
-# Register your models here.
-
-from .models import Query, Annotation, SkippedAnnotation
+from .models import Query, Annotation, UserResponse
 
 
 class QueryAdmin(admin.ModelAdmin):
@@ -11,18 +9,25 @@ class QueryAdmin(admin.ModelAdmin):
         'count'
     ]
 
-class AnnotationAdmin(admin.ModelAdmin):
+    
+class AnnotationInline(admin.StackedInline):
+    model = Annotation
+    can_delete = False
+
+
+class UserResponseAdmin(admin.ModelAdmin):
     list_display = [
-        'get_query_text',
+        'query',
         'user',
+        'annotation'
+    ]
+    readonly_fields = [
+        'query',
+        'user',
+        'annotation'
     ]
 
-    def get_query_text(self, obj):
-        return obj.query.text
-    get_query_text.short_description = 'Query Annotated'
-
-    
 
 admin.site.register(Query, QueryAdmin)
-admin.site.register(Annotation, AnnotationAdmin)
-admin.site.register(SkippedAnnotation)
+admin.site.register(UserResponse, UserResponseAdmin)
+

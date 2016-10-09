@@ -38,39 +38,7 @@ class Query(models.Model):
         return "Query: '{}'".format(self.text)
 
     
-class SkippedAnnotation(models.Model):
-    query = models.ForeignKey(
-        Query,
-        on_delete=models.CASCADE,
-        related_name="skipped_annotations",
-    )
-
-    user = models.ForeignKey(
-        User,
-        on_delete=models.CASCADE,
-        related_name="skipped_annotations",
-    )
-
-    class Meta:
-        unique_together = ("query", "user")
-
-    def __str__(self):
-        return "{} skipped query '{}'".format(self.user, self.query.text)
-
-            
 class Annotation(models.Model):
-
-    query = models.ForeignKey(
-        Query,
-        on_delete=models.CASCADE,
-        related_name="annotations",
-    )
-    user = models.ForeignKey(
-        User,
-        on_delete=models.CASCADE,
-        related_name="annotations",
-    )
-
     NAVIGATIONAL = 'NAV'
     INFORMATIONAL_DIRECTED_CLOSED = 'IDC'
     INFORMATIONAL_DIRECTED_OPEN = 'IDO'
@@ -123,8 +91,36 @@ class Annotation(models.Model):
         help_text='',
     )
 
+    def __str__(self):
+        return "Annotation: is_geo={}, is_geo_impl={}, query_type={}".format(
+            self.is_geo,
+            self.is_geo_impl,
+            self.query_type,
+        )
+
+
+class UserResponse(models.Model):
+    query = models.ForeignKey(
+        Query,
+        on_delete=models.CASCADE,
+        related_name="responses",
+    )
+    user = models.ForeignKey(
+        User,
+        on_delete=models.CASCADE,
+        related_name="responses",
+    )
+
+    annotation = models.OneToOneField(
+        Annotation,
+        null=True,
+        on_delete=models.CASCADE,
+        related_name='response' 
+    )
+
     class Meta:
         unique_together = ("query", "user")
 
     def __str__(self):
-        return "{} annotated query '{}'".format(self.user, self.query.text)
+        return "{} responded to query '{}'".format(self.user, self.query.text)
+

@@ -15,16 +15,17 @@
     </head>
 
     <body>
-        <div id="content" class="container">
+        <div id="content" class="container-fluid">
 	        <div class="row">
-                <div class="col-sm-12 col-centered">
+                <div class="col-sm-12">
                     {% if request.user.is_authenticated %}
                     <div id="login-link"><a href="/logout">Logout</a></div>
                     {% endif %}
                     <div class="clear-float"></div>
-                    {% block content %}{% endblock %}
                 </div>
             </div>
+
+            {% block content %}{% endblock %}
         </div>
     </body>
     

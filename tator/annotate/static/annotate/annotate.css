@@ -1,3 +1,8 @@
+#content {
+    margin-left: 50px;
+    margin-right: 50px;
+}
+
 .clear-float {clear: both}
 
 .col-centered {
@@ -15,7 +20,8 @@
 #query-container {
     background-color: thistle;
     padding: 0.5em;
-    margin: 2em 0;
+    margin-top: 2em;
+    margin-bottom: 3em;
 }
 
 #annotation-form .form-group {}
@@ -30,7 +36,7 @@
 .query-text {
     display: inline-block;
     vertical-align: middle;
-    width: 70%;
+    width: 80%;
     font-size: 2em;
     text-align: center;
     font-family: mono;

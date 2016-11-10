@@ -3,12 +3,25 @@ from django.utils.decorators import method_decorator
 from django.shortcuts import render, redirect
 from django.views.generic import View
 
-from .models import UserResponse, Annotation, Query
+from .models import UserResponse, Annotation, Query, HtmlMessage
 from .forms import AnnotationForm
 
 
 def index(request):
     return redirect('annotate')
+
+
+def welcome(request):
+    welcome = HtmlMessage.objects.get(name='welcome')
+    instructions = HtmlMessage.objects.get(name='instructions')
+    context = {"welcome_html": welcome.html, "instructions_html": instructions.html}
+    return render(request, 'annotate/welcome.html', context)
+
+
+def instructions(request):
+    instructions = HtmlMessage.objects.get(name='instructions')
+    context = {"instructions_html": instructions.html}
+    return render(request, 'annotate/instructions.html', context)
 
 
 @method_decorator(login_required(login_url='/login/'), name='dispatch')
@@ -48,6 +61,5 @@ class AnnotateView(View):
             )
             return redirect('annotate')
 
-        #import ipdb; ipdb.set_trace()
-        context = {'form': form, 'query': query.text}
+        context = {'form': form, 'query': query}
         return render(request, 'annotate/annotate.html', context)

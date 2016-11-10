@@ -10,18 +10,22 @@
     margin: 0 auto;
 }
 
-#login-link {float: right}
+#header-links {float: right}
 #login-form {
     margin: 0 auto;
     margin-left: 5em;
     width: 40%;
 }
 
+#welcome-container, #instructions-container {
+    margin-bottom: 1.5em;
+}
+
 #query-container {
     background-color: thistle;
     padding: 0.5em;
-    margin-top: 2em;
-    margin-bottom: 3em;
+    margin-top: 0.5em;
+    margin-bottom: 2em;
 }
 
 #annotation-form .form-group {}

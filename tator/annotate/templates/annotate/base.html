@@ -19,7 +19,11 @@
 	        <div class="row">
                 <div class="col-sm-12">
                     {% if request.user.is_authenticated %}
-                    <div id="login-link"><a href="/logout">Logout</a></div>
+                    <div id="header-links">
+                        <a href="/instructions" target="_blank">Instructions</a>
+                        |
+                        <a href="/logout">Logout</a>
+                    </div>
                     {% endif %}
                     <div class="clear-float"></div>
                 </div>

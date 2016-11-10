@@ -53,20 +53,20 @@ class Annotation(models.Model):
     
     QUERY_TYPE_CHOICES = (
         #('', 'Please select a query type'),
-        (NAVIGATIONAL, 'Navigational (eg www.facebook.com)'),
+        (NAVIGATIONAL, 'Navigational'),
         (INFORMATIONAL_DIRECTED_CLOSED,
-         'Informational - Directed - Closed'),
+         'Directed - Closed'),
         (INFORMATIONAL_DIRECTED_OPEN,
-         'Informational - Directed - Open'),
+         'Directed - Open'),
         (INFORMATIONAL_UNDIRECTED,
-         'Informational - Undirected'),
-        (INFORMATIONAL_ADVICE, 'Informational Advice'),
-        (INFORMATIONAL_LOCATE, 'Informational Locate'),
-        (INFORMATIONAL_LIST, 'Informational List'),
-        (RESOURCE_DOWNLOAD, 'Resource Download'),
-        (RESOURCE_ENTERTAINMENT, 'Resource Entertainment'),
-        (RESOURCE_INTERACT, 'Resource Interact'),
-        (RESOURCE_OBTAIN, 'Resource Obtain'),
+         'Undirected'),
+        (INFORMATIONAL_ADVICE, 'Advice'),
+        (INFORMATIONAL_LOCATE, 'Locate'),
+        (INFORMATIONAL_LIST, 'List'),
+        (RESOURCE_DOWNLOAD, 'Download'),
+        (RESOURCE_ENTERTAINMENT, 'Entertainment'),
+        (RESOURCE_INTERACT, 'Interact'),
+        (RESOURCE_OBTAIN, 'Obtain'),
     )
 
     BOOL_CHOICES = ((True, 'Yes'), (False, 'No'))
@@ -124,3 +124,12 @@ class UserResponse(models.Model):
     def __str__(self):
         return "{} responded to query '{}'".format(self.user, self.query.text)
 
+    
+class HtmlMessage(models.Model):
+
+    name = models.CharField(max_length=20)
+    description = models.CharField(max_length=100) 
+    html = models.TextField()
+
+    def __str__(self):
+        return "HTML: {}".format(self.name)

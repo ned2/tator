@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Query, Annotation, UserResponse
+from .models import Query, Annotation, UserResponse, HtmlMessage
 
 
 class QueryAdmin(admin.ModelAdmin):
@@ -27,7 +27,14 @@ class UserResponseAdmin(admin.ModelAdmin):
         'annotation'
     ]
 
+class HtmlMessageAdmin(admin.ModelAdmin):
+    list_display = [
+        'name',
+        'description',
+    ]
+
 
 admin.site.register(Query, QueryAdmin)
 admin.site.register(UserResponse, UserResponseAdmin)
+admin.site.register(HtmlMessage, HtmlMessageAdmin)
 

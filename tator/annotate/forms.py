@@ -1,6 +1,6 @@
 from django.forms import ModelForm, HiddenInput, RadioSelect
 
-from .models import Annotation
+from .models import Annotation, Skipped
 
 
 class AnnotationForm(ModelForm):
@@ -11,7 +11,7 @@ class AnnotationForm(ModelForm):
             'user': HiddenInput(),
             'query': HiddenInput(),
             'is_geo': RadioSelect(),
-            'is_geo_impl': RadioSelect(),
+            'is_geo_expl': RadioSelect(),
             'query_type': RadioSelect(),
         }
 
@@ -23,5 +23,10 @@ class AnnotationForm(ModelForm):
         # false, but we've changed to Yes/No radio options, where a response is
         # required
         self.fields['is_geo'].required = True
-        self.fields['is_geo_impl'].required = True
+        self.fields['is_geo_expl'].required = True
 
+
+class SkippedForm(ModelForm):
+    class Meta:
+        model = Skipped
+        fields = '__all__'

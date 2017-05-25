@@ -1,6 +1,18 @@
 from django.contrib import admin
+from django.core.urlresolvers import reverse
+from django.utils.html import format_html
 
-from .models import Query, Annotation, UserResponse, HtmlMessage
+from .models import Query, Annotation, UserResponse, HtmlMessage, Skipped
+
+
+def get_instance_admin_url(instance):
+    lookup = 'admin:{0}_{1}_change'.format(instance._meta.app_label,
+                                           instance._meta.model_name)
+    admin_url = reverse(lookup, args=(instance.pk,))
+    return admin_url
+
+def linkify(url, text):
+    return format_html('<a href="{url}">{text}</a>', url=url, text=text)
 
 
 class QueryAdmin(admin.ModelAdmin):
@@ -9,6 +21,10 @@ class QueryAdmin(admin.ModelAdmin):
         'count'
     ]
 
+class AnnotationAdmin(admin.ModelAdmin):
+    list_display = [
+        'response',
+    ]
     
 class AnnotationInline(admin.StackedInline):
     model = Annotation
@@ -27,6 +43,19 @@ class UserResponseAdmin(admin.ModelAdmin):
         'annotation'
     ]
 
+class SkippedAdmin(admin.ModelAdmin):
+    list_display = [
+        'description',
+        'query',
+        'response'
+    ]
+    readonly_fields = ['description']
+    
+    def query(self, obj):
+        url = get_instance_admin_url(obj.response.query)
+        return linkify(url, '"{}"'.format(obj.response.query.text)) 
+    
+
 class HtmlMessageAdmin(admin.ModelAdmin):
     list_display = [
         'name',
@@ -35,6 +64,8 @@ class HtmlMessageAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Query, QueryAdmin)
+admin.site.register(Annotation, AnnotationAdmin)
 admin.site.register(UserResponse, UserResponseAdmin)
+admin.site.register(Skipped, SkippedAdmin)
 admin.site.register(HtmlMessage, HtmlMessageAdmin)
 

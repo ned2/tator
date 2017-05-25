@@ -10,7 +10,6 @@ TODO
 """
 
 def import_queries(path, limit=None):
-    
     with open(path) as csvfile:
         reader = DictReader(csvfile, delimiter=';')
         for i, row in enumerate(reader):
@@ -72,13 +71,13 @@ class Annotation(models.Model):
     BOOL_CHOICES = ((True, 'Yes'), (False, 'No'))
 
     is_geo = models.BooleanField(
-        verbose_name='1. Can this query be answered with a pin on a map?',
+        verbose_name='1. Is this query best answered with a pin on a map?',
         choices=BOOL_CHOICES,
         default=None,
         help_text='',
     )
-    is_geo_impl = models.BooleanField(
-        verbose_name='2. Is the location implicit in the query?',
+    is_geo_expl = models.BooleanField(
+        verbose_name='2. Is the location explicit in the query?',
         choices=BOOL_CHOICES,
         default=None,
         help_text=''
@@ -92,13 +91,16 @@ class Annotation(models.Model):
     )
 
     def __str__(self):
-        return "Annotation: is_geo={}, is_geo_impl={}, query_type={}".format(
+        return "Annotation: is_geo={}, is_geo_expl={}, query_type={}".format(
             self.is_geo,
-            self.is_geo_impl,
+            self.is_geo_expl,
             self.query_type,
         )
 
-
+class Skipped(models.Model):
+    description = models.TextField()
+    
+    
 class UserResponse(models.Model):
     query = models.ForeignKey(
         Query,
@@ -110,19 +112,29 @@ class UserResponse(models.Model):
         on_delete=models.CASCADE,
         related_name="responses",
     )
-
     annotation = models.OneToOneField(
         Annotation,
         null=True,
         on_delete=models.CASCADE,
         related_name='response' 
     )
-
+    skipped = models.OneToOneField(
+        Skipped,
+        null=True,
+        on_delete=models.CASCADE,
+        related_name='response' 
+    )    
+    timestamp = models.DateTimeField(auto_now_add=True)
+    
     class Meta:
         unique_together = ("query", "user")
 
     def __str__(self):
-        return "{} responded to query '{}'".format(self.user, self.query.text)
+        return "{} responded to query '{}' at {}".format(
+            self.user,
+            self.query.text,
+            self.timestamp
+        )
 
     
 class HtmlMessage(models.Model):

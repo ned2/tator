@@ -1,6 +1,10 @@
+import random
+
 from django.db import models
 from django.contrib.auth.models import User
 from django.core.urlresolvers import reverse
+from django.dispatch import receiver
+from django.db.models.signals import post_delete
 
 from csv import DictReader
 
@@ -9,20 +13,28 @@ TODO
  -- help strings for Annotation fields
 """
 
-def import_queries(path, limit=None):
+def import_queries(path, limit=None, rand=True):
+    added = 0
     with open(path) as csvfile:
-        reader = DictReader(csvfile, delimiter=';')
-        for i, row in enumerate(reader):
+        lines = DictReader(csvfile, delimiter=';')
+        if rand:
+            lines = list(lines)
+            random.shuffle(lines)
+
+        for row in lines:
             text = row['querystring']
             count = row['countqstring']
+
             if text == '':
                 continue
-            Query.objects.create(text=text, count=count)
 
-            if limit is not None and i == limit - 1:
+            Query.objects.create(text=text, count=count)
+            added += 1
+
+            if limit is not None and added >= limit:
                 break
             
-        print("Added {} queries to the database.".format(i))
+        print("Added {} queries to the database.".format(added))
 
 
 class Query(models.Model):
@@ -77,7 +89,7 @@ class Annotation(models.Model):
         help_text='',
     )
     is_geo_expl = models.BooleanField(
-        verbose_name='2. Is the location explicit in the query?',
+        verbose_name='2. Is a location explicit in the query?',
         choices=BOOL_CHOICES,
         default=None,
         help_text=''
@@ -136,7 +148,19 @@ class UserResponse(models.Model):
             self.timestamp
         )
 
-    
+
+@receiver(post_delete, sender=UserResponse)
+def post_delete_user_response(sender, instance, *args, **kwargs):
+    # Make sure we clean up annotations and skippeds associated with any
+    # deleted UserResponse objects 
+
+    if instance.skipped:
+        instance.skipped.delete()
+
+    if instance.annotation:
+        instance.annotation.delete()
+
+
 class HtmlMessage(models.Model):
 
     name = models.CharField(max_length=20)

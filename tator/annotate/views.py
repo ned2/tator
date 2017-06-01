@@ -1,3 +1,5 @@
+import random
+
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 from django.shortcuts import render, redirect
@@ -14,7 +16,10 @@ def index(request):
 def welcome(request):
     welcome = HtmlMessage.objects.get(name='welcome')
     instructions = HtmlMessage.objects.get(name='instructions')
-    context = {"welcome_html": welcome.html, "instructions_html": instructions.html}
+    context = {
+        "welcome_html": welcome.html,
+        "instructions_html": instructions.html
+    }
     return render(request, 'annotate/welcome.html', context)
 
 
@@ -24,22 +29,24 @@ def instructions(request):
     return render(request, 'annotate/instructions.html', context)
 
 
+def finished(request):
+    finished = HtmlMessage.objects.get(name='finished')
+    context = {"finished_html": finished.html}
+    return render(request, 'annotate/finished.html', context)
+
+
 @method_decorator(login_required(login_url='/login/'), name='dispatch')
 class AnnotateView(View):
     
     def get(self, request):
         # get the first from all queries which the user hasn't either annotated
         # or skipped
-        query = Query.objects.exclude(
-            responses__user=request.user
-        ).first()
-        
-        if query is None:
+        queryset = Query.objects.exclude(responses__user=request.user)
+        if not queryset.exists():
             # User is finished annotating
-            finished = HtmlMessage.objects.get(name='instructions')
-            context = {"finished_html": finished.html}
-            return render(request, 'annotate/finished.html', {})
+            return redirect('finished')
         else:
+            query = random.choice(queryset)
             context = {
                 'annotation_form': AnnotationForm(),
                 'skipped_form': SkippedForm(),

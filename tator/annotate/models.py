@@ -64,7 +64,7 @@ class Annotation(models.Model):
     
     QUERY_TYPE_CHOICES = (
         #('', 'Please select a query type'),
-        (NAVIGATIONAL, 'Navigational'),
+        (NAVIGATIONAL, 'Web Navigation'),
         (INFORMATIONAL_DIRECTED_CLOSED,
          'Directed - Closed'),
         (INFORMATIONAL_DIRECTED_OPEN,

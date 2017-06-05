@@ -50,6 +50,23 @@ class Query(models.Model):
 
     
 class Annotation(models.Model):
+    # Values for loc_type (Q2)
+    # values are from the 2x2 binary feature space of:
+    #   a) is a location explicit in the query
+    #   b) is there a place name in the query
+    POS_LOC_POS_PLACE = 'YY'
+    POS_LOC_NEG_PLACE = 'YN'
+    NEG_LOC_POS_PLACE = 'NY'
+    NEG_LOC_NEG_PLACE = 'NN'
+    
+    LOCATION_TYPE_CHOICES = (
+        (POS_LOC_POS_PLACE, 'Yes -- with place name'),
+        (POS_LOC_NEG_PLACE, 'Yes -- without place name'),
+        (NEG_LOC_POS_PLACE, 'No'),
+        (NEG_LOC_NEG_PLACE, 'Not applicable'),
+    )
+    
+    # Values for query_type (Q3)
     NAVIGATIONAL = 'NAV'
     INFORMATIONAL_DIRECTED_CLOSED = 'IDC'
     INFORMATIONAL_DIRECTED_OPEN = 'IDO'
@@ -61,7 +78,7 @@ class Annotation(models.Model):
     RESOURCE_ENTERTAINMENT = 'RDE'
     RESOURCE_INTERACT = 'RIN'
     RESOURCE_OBTAIN = 'ROB'
-    
+
     QUERY_TYPE_CHOICES = (
         #('', 'Please select a query type'),
         (NAVIGATIONAL, 'Web Navigation'),
@@ -86,26 +103,29 @@ class Annotation(models.Model):
         verbose_name='1. Is this query best answered with a pin on a map?',
         choices=BOOL_CHOICES,
         default=None,
-        help_text='',
+        help_text='This questions asks whether this query would be most suitably answered by a spatial interface, such as a map or route directions. It could be presented using one or multiple pins, lines and/or regions, or a set of instructions',
     )
-    is_geo_expl = models.BooleanField(
+
+    loc_type = models.CharField(
         verbose_name='2. Is a location explicit in the query?',
-        choices=BOOL_CHOICES,
+        max_length=3,
+        choices=LOCATION_TYPE_CHOICES,
         default=None,
-        help_text=''
+        help_text='This questions asks whether this query contains a place name or other location reference (e.g., work) relating to Question 1.',
     )
+
     query_type = models.CharField(
         verbose_name='3. What type of query is this?',
         max_length=3,
         choices=QUERY_TYPE_CHOICES,
         default=None,
-        help_text='',
+        help_text='This questions asks you to classify the query into one of the subcategories of Navigation, Informational and Resource (Rose and Levinson, 2004). Below are the definitions as provided by Rose and Levinson, and examples for each of the categories. ',
     )
 
     def __str__(self):
         return "Annotation: is_geo={}, is_geo_expl={}, query_type={}".format(
             self.is_geo,
-            self.is_geo_expl,
+            self.loc_type,
             self.query_type,
         )
 
@@ -142,11 +162,12 @@ class UserResponse(models.Model):
         unique_together = ("query", "user")
 
     def __str__(self):
-        return "{} responded to query '{}' at {}".format(
-            self.user,
-            self.query.text,
-            self.timestamp
-        )
+        if self.skipped:
+            msg = '{} skipped query "{}" at "{}"'
+        else:
+            msg = '{} annotated query "{}" at {}'
+
+        return msg.format(self.user, self.query.text, self.timestamp)
 
 
 @receiver(post_delete, sender=UserResponse)

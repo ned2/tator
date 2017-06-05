@@ -11,7 +11,7 @@ class AnnotationForm(ModelForm):
             'user': HiddenInput(),
             'query': HiddenInput(),
             'is_geo': RadioSelect(),
-            'is_geo_expl': RadioSelect(),
+            'loc_type': RadioSelect(),
             'query_type': RadioSelect(),
         }
 
@@ -23,7 +23,6 @@ class AnnotationForm(ModelForm):
         # false, but we've changed to Yes/No radio options, where a response is
         # required
         self.fields['is_geo'].required = True
-        self.fields['is_geo_expl'].required = True
 
 
 class SkippedForm(ModelForm):

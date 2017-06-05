@@ -25,17 +25,18 @@ class AnnotationAdmin(admin.ModelAdmin):
     list_display = [
         'response',
     ]
+
+    readonly_fields = [
+        'is_geo',
+        'loc_type',
+        'query_type',
+    ]
     
-class AnnotationInline(admin.StackedInline):
-    model = Annotation
-    can_delete = False
-
-
 class UserResponseAdmin(admin.ModelAdmin):
     list_display = [
         'query',
         'user',
-        'annotation'
+        '__str__',
     ]
     readonly_fields = [
         'query',
@@ -45,8 +46,8 @@ class UserResponseAdmin(admin.ModelAdmin):
 
 class SkippedAdmin(admin.ModelAdmin):
     list_display = [
-        'description',
         'query',
+        'description',
         'response'
     ]
     readonly_fields = ['description']

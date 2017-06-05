@@ -24,7 +24,7 @@
     {% bootstrap_form annotation_form exclude='query_type' form_group_class='form-group col-md-3' %}
 
     <div class="form-group col-md-3{% if form.errors and not form.query_type.errors %} has-success{% endif %}">
-        {% bootstrap_label annotation_form.fields.query_type.label label_class="control-label" %}   
+        {% bootstrap_label annotation_form.fields.query_type.label label_class="control-label" label_title=annotation_form.fields.query_type.help_text %}   
         <div id="id_query_type">
             {% for val, choice in annotation_form.fields.query_type.choices %}
             {% if forloop.counter == 1 %}

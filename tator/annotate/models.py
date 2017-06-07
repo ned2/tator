@@ -8,33 +8,30 @@ from django.db.models.signals import post_delete
 
 from csv import DictReader
 
-"""
-TODO
- -- help strings for Annotation fields
-"""
+import pandas as pd
 
-def import_queries(path, limit=None, rand=True):
-    added = 0
+
+def import_queries(path, sample='first', limit=None):    
     with open(path) as csvfile:
-        lines = DictReader(csvfile, delimiter=';')
-        if rand:
-            lines = list(lines)
-            random.shuffle(lines)
+        df = pd.read_csv(csvfile, delimiter=';', skiprows=[1])
+        
+    if limit is not None:
+        if sample == 'first':
+            df = df[:limit]
+        elif sample == 'random':
+            df = df.sample(limit)
+        elif sample == 'proportional':
+            df = df.sample(limit, weights='countqstring')
+        else:
+            print('Unknown sampling method')
+            return
 
-        for row in lines:
-            text = row['querystring']
-            count = row['countqstring']
+    for i, values in enumerate(df.values.tolist()):
+         text, count = values
+         Query.objects.create(text=text, count=count)
 
-            if text == '':
-                continue
-
-            Query.objects.create(text=text, count=count)
-            added += 1
-
-            if limit is not None and added >= limit:
-                break
-            
-        print("Added {} queries to the database.".format(added))
+    print("Added {} queries to the database.\n".format(i+1))
+    print(df.describe())
 
 
 class Query(models.Model):

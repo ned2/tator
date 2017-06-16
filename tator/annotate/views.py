@@ -9,10 +9,12 @@ from .models import UserResponse, Annotation, Query, HtmlMessage
 from .forms import AnnotationForm, SkippedForm
 
 
+@login_required
 def index(request):
     return redirect('annotate')
 
 
+@login_required
 def welcome(request):
     welcome = HtmlMessage.objects.get(name='welcome')
     instructions = HtmlMessage.objects.get(name='instructions')
@@ -23,19 +25,21 @@ def welcome(request):
     return render(request, 'annotate/welcome.html', context)
 
 
+@login_required
 def instructions(request):
     instructions = HtmlMessage.objects.get(name='instructions')
     context = {"instructions_html": instructions.html}
     return render(request, 'annotate/instructions.html', context)
 
 
+@login_required
 def finished(request):
     finished = HtmlMessage.objects.get(name='finished')
     context = {"finished_html": finished.html}
     return render(request, 'annotate/finished.html', context)
 
 
-@method_decorator(login_required(login_url='/login/'), name='dispatch')
+@method_decorator(login_required, name='dispatch')
 class AnnotateView(View):
     
     def get(self, request):

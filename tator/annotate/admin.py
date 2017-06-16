@@ -36,7 +36,7 @@ class UserResponseAdmin(admin.ModelAdmin):
     list_display = [
         'query',
         'user',
-        '__str__',
+        'timestamp',
     ]
     readonly_fields = [
         'query',

@@ -1,37 +1,8 @@
-import random
-
 from django.db import models
 from django.contrib.auth.models import User
 from django.core.urlresolvers import reverse
 from django.dispatch import receiver
 from django.db.models.signals import post_delete
-
-from csv import DictReader
-
-import pandas as pd
-
-
-def import_queries(path, sample='first', limit=None):    
-    with open(path) as csvfile:
-        df = pd.read_csv(csvfile, delimiter=';', skiprows=[1])
-        
-    if limit is not None:
-        if sample == 'first':
-            df = df[:limit]
-        elif sample == 'random':
-            df = df.sample(limit)
-        elif sample == 'proportional':
-            df = df.sample(limit, weights='countqstring')
-        else:
-            print('Unknown sampling method')
-            return
-
-    for i, values in enumerate(df.values.tolist()):
-         text, count = values
-         Query.objects.create(text=text, count=count)
-
-    print("Added {} queries to the database.\n".format(i+1))
-    print(df.describe())
 
 
 class Query(models.Model):
@@ -40,6 +11,7 @@ class Query(models.Model):
     count = models.IntegerField() 
 
     class Meta:
+        app_label = "annotate"
         verbose_name_plural = "queries"
 
     def __str__(self):
@@ -119,6 +91,27 @@ class Annotation(models.Model):
         help_text='This questions asks you to classify the query into one of the subcategories of Navigation, Informational and Resource (Rose and Levinson, 2004). Below are the definitions as provided by Rose and Levinson, and examples for each of the categories. ',
     )
 
+    def get_question(self, question_num):
+        if question_num == 1:
+            return self.is_geo
+        elif question_num == 2:
+            return self.loc_type
+        elif question_num == 3:
+            return self.query_type
+
+        print("Not a valid question.")
+
+    @classmethod    
+    def get_num_categories(cls, question_num):
+        if question_num == 1:
+            return 2
+        elif question_num == 2:
+            return len(cls.LOCATION_TYPE_CHOICES)
+        elif question_num == 3:
+            return len(cls.QUERY_TYPE_CHOICES)
+
+        print("Not a valid question.")        
+        
     def __str__(self):
         return "Annotation: is_geo={}, is_geo_expl={}, query_type={}".format(
             self.is_geo,
@@ -126,9 +119,13 @@ class Annotation(models.Model):
             self.query_type,
         )
 
+    # class Meta:
+    #     app_label = "annotate"
+        
+    
 class Skipped(models.Model):
     description = models.TextField()
-    
+
     
 class UserResponse(models.Model):
     query = models.ForeignKey(

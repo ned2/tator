@@ -1,6 +1,6 @@
 import os
 import sys
-from collections import Counter
+from collections import Counter, defaultdict
 
 import pandas as pd
 from statsmodels.stats.inter_rater import aggregate_raters, fleiss_kappa
@@ -41,9 +41,9 @@ def import_queries(path, sample='first', limit=None):
     print(df.describe())
 
 
-def pretty_print_counter(counter):
+def pretty_print_counter(counter, reverse=False):
     lines = []
-    for key, value in counter.most_common():
+    for key, value in sorted(counter.items(), reverse=reverse):
         lines.append("{}: {}".format(key, value))
     return "\n".join(lines)
 
@@ -57,37 +57,55 @@ def get_user_results(username):
     annotations = [r for r in responses if r.annotation]
     skipped = [r for r in responses if r.skipped]
 
-    lines.append("Skipped queries:\n")
+    lines.append("{} Skipped Queries:\n".format(len(skipped)))
     for response in skipped:
-        line ='    "{}" --- "{}"'.format(response.query.text,
-                                            response.skipped.description)
+        line ='    "{}"\n    --- "{}"'.format(response.query.text,
+                                              response.skipped.description)
         lines.append(line)
 
-    lines.append("\nAnnotations:\n")
+    lines.append("\n{} Annotations:\n".format(len(annotations)))
+
     lines.append(Annotation._meta.get_field('is_geo').verbose_name)
     q1 = Counter(r.annotation.is_geo for r in annotations)
-    q1_output = pretty_print_counter(q1)
-    lines.append(q1_output)
+    lines.append(pretty_print_counter(q1, reverse=True))
 
     lines.append("")
 
     lines.append(Annotation._meta.get_field('loc_type').verbose_name)
-    q1 = Counter(r.annotation.is_geo for r in annotations)
-    q1_output = pretty_print_counter(q1)
-    lines.append(q1_output)
+    q2 = Counter(r.annotation.loc_type for r in annotations)
+    lines.append(pretty_print_counter(q2, reverse=True))
 
-    #lines.append("Q1: \nY: {}\nN:{}")
+    lines.append("")
+    
+    lines.append(Annotation._meta.get_field('query_type').verbose_name)
+    q3 = Counter(r.annotation.query_type for r in annotations)
+    lines.append(pretty_print_counter(q3))
     
     return "\n".join(lines)
     
+
+def do_iaa_pairs(user_pairs, questions=(1,2,3), level='fine'):
+    results = defaultdict(list)
+    for question in questions:
+        for users in user_pairs:
+            kappa = get_iaa(question, users=users)
+            results[question].append(kappa)
+    return results
+
+
+def print_iaa_pairs(results, user_pairs):
+    print('    '+'   '.join(', '.join(user) for user in user_pairs))
+    for question, kappas in results.items():
+        ks = ''.join("{:0<5.3}                    ".format(k) for k in kappas)
+        print("Q{}: {}".format(question, ks))
     
+
 def get_iaa(question_num, queries=None, users=None, level='fine'):
     data  = get_annotations(question_num, queries, users, level)
     #n_cat = Annotation.get_num_categories(question_num)
     results = aggregate_raters(data, n_cat=None)
     kappa = fleiss_kappa(results[0])
     return kappa
-
 
 def get_annotations(question_num, queries=None, users=None, level='fine'):
     queries = Query.objects.exclude(responses__skipped__isnull=False).distinct()

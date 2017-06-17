@@ -11,6 +11,7 @@ os.environ['DJANGO_SETTINGS_MODULE'] = 'tagit.settings'
 import django
 django.setup()
 
+from django.contrib.auth.models import User
 
 from annotate.models import Query, Annotation, UserResponse
 
@@ -134,3 +135,38 @@ def get_annotations(question_num, queries=None, users=None, level='fine'):
         if results:
             data.append(results)
     return data
+
+
+def show_agreement(question_num, users, skip_agree=True):
+    lines = []
+    queries = Query.objects.exclude(responses__skipped__isnull=False).distinct()
+    queries = sorted(queries, key=lambda x:x.pk)
+    users.sort()
+    col_width = max(len(u) for u in users) + 2
+    
+    lines.append("".join("{u:{width}}".format(u=u, width=col_width)
+                         for u in users))
+    agree = 0
+    disagree = 0
+    
+    for query in queries:
+        responses  = query.responses.order_by('user__username')
+        answers = [r.annotation.get_question(question_num) for r in responses]
+        if skip_agree and len(set(answers)) <= 1:
+            # all annotators agree, skip
+            agree += 1
+            continue
+        disagree += 1
+        line = "".join("{a:<{width}}".format(a=a, width=col_width)
+                       for a in answers) + query.text
+        lines.append(line)
+
+    start = [
+        "Question {}:".format(question_num),
+        "Number all agree: {}".format(agree),
+        "Number with some disagreement: {}".format(disagree),
+        ""
+    ]
+
+    return "\n".join(start + lines)
+    

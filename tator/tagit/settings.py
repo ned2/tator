@@ -25,7 +25,7 @@ SECRET_KEY = 'm0=_^jxmvau1_5i1r67j0@31-)4%3$r+gqjjipwie4z70_41x&'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['nedned.cis.unimelb.edu.au']
+ALLOWED_HOSTS = ['nedned.cis.unimelb.edu.au', 'localhost']
 
 
 # Application definition

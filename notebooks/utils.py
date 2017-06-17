@@ -88,7 +88,7 @@ def do_iaa_pairs(user_pairs, questions=(1,2,3), level='fine'):
     results = defaultdict(list)
     for question in questions:
         for users in user_pairs:
-            kappa = get_iaa(question, users=users)
+            kappa = get_iaa(question, users=users, level=level)
             results[question].append(kappa)
     return results
 
@@ -107,7 +107,10 @@ def get_iaa(question_num, queries=None, users=None, level='fine'):
     kappa = fleiss_kappa(results[0])
     return kappa
 
+
 def get_annotations(question_num, queries=None, users=None, level='fine'):
+    assert level in ('fine', 'coarse')
+        
     queries = Query.objects.exclude(responses__skipped__isnull=False).distinct()
 
     if queries is not None:
@@ -124,7 +127,7 @@ def get_annotations(question_num, queries=None, users=None, level='fine'):
 
         results = [r.annotation.get_question(question_num) for r in responses]
 
-        if question_num in (2,3) and level == 'course':
+        if question_num in (2,3) and level == 'coarse':
             # use course grained agreement
             results = [r[0] for r in results]
             

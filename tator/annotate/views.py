@@ -45,7 +45,7 @@ class AnnotateView(View):
     def get(self, request):
         # get the first from all queries which the user hasn't either annotated
         # or skipped
-        queryset = Query.objects.exclude(responses__user=request.user)
+        queryset = Query.objects.filter(collection='pilot').exclude(responses__user=request.user)
         if not queryset.exists():
             # User is finished annotating
             return redirect('finished')

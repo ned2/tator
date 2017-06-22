@@ -1,0 +1,2927 @@
+
+\begin{frame}[fragile]
+\frametitle{Query 1}
+\vspace{1em}
+
+\emph{Moving}
+
+\vfill
+
+\begin{table}
+  \centering
+  \begin{tabular}{ l l l l }
+    & \textbf{Amy} & \textbf{Sarah} & \textbf{Martin}\\
+    \toprule
+    Q1 & False & NN & ILI\\
+Q2 & False & NY & ILO\\
+Q3 & False & NY & IAD\\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\vfill
+
+\tiny{
+
+\begin{enumerate}
+\item Is this query best answered with a pin on a map?
+\item Is a location explicit in the query?
+\item What type of query is this?
+\end{enumerate}
+
+\vfill
+
+\begin{multicols}{2}
+\begin{verbatim}
+YY = Yes -- with place name
+YN = Yes -- without place name
+NY = No (but still a place)
+NN = Not applicable 
+     (ie not explicit location and not a place)
+\end{verbatim}
+
+\columnbreak
+\begin{verbatim}
+IAD = INFORMATIONAL_ADVICE
+IDC = INFORMATIONAL_DIRECTED_CLOSED
+IDO = INFORMATIONAL_DIRECTED_OPEN
+ILI = INFORMATIONAL_LIST
+ILO = INFORMATIONAL_LOCATE
+IUN = INFORMATIONAL_UNDIRECTED
+NAV = NAVIGATIONAL
+RDE = RESOURCE_ENTERTAINMENT
+RDO = RESOURCE_DOWNLOAD
+RIN = RESOURCE_INTERACT
+ROB = RESOURCE_OBTAIN
+\end{verbatim}
+\end{multicols}
+}
+
+\end{frame}
+
+
+\begin{frame}[fragile]
+\frametitle{Query 2}
+\vspace{1em}
+
+\emph{Used Cars subaru outback NSW}
+
+\vfill
+
+\begin{table}
+  \centering
+  \begin{tabular}{ l l l l }
+    & \textbf{Amy} & \textbf{Sarah} & \textbf{Martin}\\
+    \toprule
+    Q1 & True & YY & ILO\\
+Q2 & True & YY & ILO\\
+Q3 & True & YY & ILI\\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\vfill
+
+\tiny{
+
+\begin{enumerate}
+\item Is this query best answered with a pin on a map?
+\item Is a location explicit in the query?
+\item What type of query is this?
+\end{enumerate}
+
+\vfill
+
+\begin{multicols}{2}
+\begin{verbatim}
+YY = Yes -- with place name
+YN = Yes -- without place name
+NY = No (but still a place)
+NN = Not applicable 
+     (ie not explicit location and not a place)
+\end{verbatim}
+
+\columnbreak
+\begin{verbatim}
+IAD = INFORMATIONAL_ADVICE
+IDC = INFORMATIONAL_DIRECTED_CLOSED
+IDO = INFORMATIONAL_DIRECTED_OPEN
+ILI = INFORMATIONAL_LIST
+ILO = INFORMATIONAL_LOCATE
+IUN = INFORMATIONAL_UNDIRECTED
+NAV = NAVIGATIONAL
+RDE = RESOURCE_ENTERTAINMENT
+RDO = RESOURCE_DOWNLOAD
+RIN = RESOURCE_INTERACT
+ROB = RESOURCE_OBTAIN
+\end{verbatim}
+\end{multicols}
+}
+
+\end{frame}
+
+
+\begin{frame}[fragile]
+\frametitle{Query 3}
+\vspace{1em}
+
+\emph{gangnam style}
+
+\vfill
+
+\begin{table}
+  \centering
+  \begin{tabular}{ l l l l }
+    & \textbf{Amy} & \textbf{Sarah} & \textbf{Martin}\\
+    \toprule
+    Q1 & False & NN & RDE\\
+Q2 & False & NN & IUN\\
+Q3 & False & NN & RDE\\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\vfill
+
+\tiny{
+
+\begin{enumerate}
+\item Is this query best answered with a pin on a map?
+\item Is a location explicit in the query?
+\item What type of query is this?
+\end{enumerate}
+
+\vfill
+
+\begin{multicols}{2}
+\begin{verbatim}
+YY = Yes -- with place name
+YN = Yes -- without place name
+NY = No (but still a place)
+NN = Not applicable 
+     (ie not explicit location and not a place)
+\end{verbatim}
+
+\columnbreak
+\begin{verbatim}
+IAD = INFORMATIONAL_ADVICE
+IDC = INFORMATIONAL_DIRECTED_CLOSED
+IDO = INFORMATIONAL_DIRECTED_OPEN
+ILI = INFORMATIONAL_LIST
+ILO = INFORMATIONAL_LOCATE
+IUN = INFORMATIONAL_UNDIRECTED
+NAV = NAVIGATIONAL
+RDE = RESOURCE_ENTERTAINMENT
+RDO = RESOURCE_DOWNLOAD
+RIN = RESOURCE_INTERACT
+ROB = RESOURCE_OBTAIN
+\end{verbatim}
+\end{multicols}
+}
+
+\end{frame}
+
+
+\begin{frame}[fragile]
+\frametitle{Query 4}
+\vspace{1em}
+
+\emph{Movies in Sydney George st cinemas}
+
+\vfill
+
+\begin{table}
+  \centering
+  \begin{tabular}{ l l l l }
+    & \textbf{Amy} & \textbf{Sarah} & \textbf{Martin}\\
+    \toprule
+    Q1 & False & YY & IDC\\
+Q2 & False & YY & NAV\\
+Q3 & True & YY & ILI\\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\vfill
+
+\tiny{
+
+\begin{enumerate}
+\item Is this query best answered with a pin on a map?
+\item Is a location explicit in the query?
+\item What type of query is this?
+\end{enumerate}
+
+\vfill
+
+\begin{multicols}{2}
+\begin{verbatim}
+YY = Yes -- with place name
+YN = Yes -- without place name
+NY = No (but still a place)
+NN = Not applicable 
+     (ie not explicit location and not a place)
+\end{verbatim}
+
+\columnbreak
+\begin{verbatim}
+IAD = INFORMATIONAL_ADVICE
+IDC = INFORMATIONAL_DIRECTED_CLOSED
+IDO = INFORMATIONAL_DIRECTED_OPEN
+ILI = INFORMATIONAL_LIST
+ILO = INFORMATIONAL_LOCATE
+IUN = INFORMATIONAL_UNDIRECTED
+NAV = NAVIGATIONAL
+RDE = RESOURCE_ENTERTAINMENT
+RDO = RESOURCE_DOWNLOAD
+RIN = RESOURCE_INTERACT
+ROB = RESOURCE_OBTAIN
+\end{verbatim}
+\end{multicols}
+}
+
+\end{frame}
+
+
+\begin{frame}[fragile]
+\frametitle{Query 5}
+\vspace{1em}
+
+\emph{Double room  best for couple or two girls or partner. student accommodation}
+
+\vfill
+
+\begin{table}
+  \centering
+  \begin{tabular}{ l l l l }
+    & \textbf{Amy} & \textbf{Sarah} & \textbf{Martin}\\
+    \toprule
+    Q1 & False & NN & IAD\\
+Q2 & False & YN & ILI\\
+Q3 & True & NY & ILO\\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\vfill
+
+\tiny{
+
+\begin{enumerate}
+\item Is this query best answered with a pin on a map?
+\item Is a location explicit in the query?
+\item What type of query is this?
+\end{enumerate}
+
+\vfill
+
+\begin{multicols}{2}
+\begin{verbatim}
+YY = Yes -- with place name
+YN = Yes -- without place name
+NY = No (but still a place)
+NN = Not applicable 
+     (ie not explicit location and not a place)
+\end{verbatim}
+
+\columnbreak
+\begin{verbatim}
+IAD = INFORMATIONAL_ADVICE
+IDC = INFORMATIONAL_DIRECTED_CLOSED
+IDO = INFORMATIONAL_DIRECTED_OPEN
+ILI = INFORMATIONAL_LIST
+ILO = INFORMATIONAL_LOCATE
+IUN = INFORMATIONAL_UNDIRECTED
+NAV = NAVIGATIONAL
+RDE = RESOURCE_ENTERTAINMENT
+RDO = RESOURCE_DOWNLOAD
+RIN = RESOURCE_INTERACT
+ROB = RESOURCE_OBTAIN
+\end{verbatim}
+\end{multicols}
+}
+
+\end{frame}
+
+
+\begin{frame}[fragile]
+\frametitle{Query 6}
+\vspace{1em}
+
+\emph{building 10 26-34 Dunning Ave  Rosebery NSW}
+
+\vfill
+
+\begin{table}
+  \centering
+  \begin{tabular}{ l l l l }
+    & \textbf{Amy} & \textbf{Sarah} & \textbf{Martin}\\
+    \toprule
+    Q1 & True & YY & ILO\\
+Q2 & True & YY & IDC\\
+Q3 & True & YY & ILO\\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\vfill
+
+\tiny{
+
+\begin{enumerate}
+\item Is this query best answered with a pin on a map?
+\item Is a location explicit in the query?
+\item What type of query is this?
+\end{enumerate}
+
+\vfill
+
+\begin{multicols}{2}
+\begin{verbatim}
+YY = Yes -- with place name
+YN = Yes -- without place name
+NY = No (but still a place)
+NN = Not applicable 
+     (ie not explicit location and not a place)
+\end{verbatim}
+
+\columnbreak
+\begin{verbatim}
+IAD = INFORMATIONAL_ADVICE
+IDC = INFORMATIONAL_DIRECTED_CLOSED
+IDO = INFORMATIONAL_DIRECTED_OPEN
+ILI = INFORMATIONAL_LIST
+ILO = INFORMATIONAL_LOCATE
+IUN = INFORMATIONAL_UNDIRECTED
+NAV = NAVIGATIONAL
+RDE = RESOURCE_ENTERTAINMENT
+RDO = RESOURCE_DOWNLOAD
+RIN = RESOURCE_INTERACT
+ROB = RESOURCE_OBTAIN
+\end{verbatim}
+\end{multicols}
+}
+
+\end{frame}
+
+
+\begin{frame}[fragile]
+\frametitle{Query 7}
+\vspace{1em}
+
+\emph{bdnews24 bangla}
+
+\vfill
+
+\begin{table}
+  \centering
+  \begin{tabular}{ l l l l }
+    & \textbf{Amy} & \textbf{Sarah} & \textbf{Martin}\\
+    \toprule
+    Q1 & False & NN & NAV\\
+Q2 & False & NY & NAV\\
+Q3 & False & YY & NAV\\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\vfill
+
+\tiny{
+
+\begin{enumerate}
+\item Is this query best answered with a pin on a map?
+\item Is a location explicit in the query?
+\item What type of query is this?
+\end{enumerate}
+
+\vfill
+
+\begin{multicols}{2}
+\begin{verbatim}
+YY = Yes -- with place name
+YN = Yes -- without place name
+NY = No (but still a place)
+NN = Not applicable 
+     (ie not explicit location and not a place)
+\end{verbatim}
+
+\columnbreak
+\begin{verbatim}
+IAD = INFORMATIONAL_ADVICE
+IDC = INFORMATIONAL_DIRECTED_CLOSED
+IDO = INFORMATIONAL_DIRECTED_OPEN
+ILI = INFORMATIONAL_LIST
+ILO = INFORMATIONAL_LOCATE
+IUN = INFORMATIONAL_UNDIRECTED
+NAV = NAVIGATIONAL
+RDE = RESOURCE_ENTERTAINMENT
+RDO = RESOURCE_DOWNLOAD
+RIN = RESOURCE_INTERACT
+ROB = RESOURCE_OBTAIN
+\end{verbatim}
+\end{multicols}
+}
+
+\end{frame}
+
+
+\begin{frame}[fragile]
+\frametitle{Query 8}
+\vspace{1em}
+
+\emph{msn jp}
+
+\vfill
+
+\begin{table}
+  \centering
+  \begin{tabular}{ l l l l }
+    & \textbf{Amy} & \textbf{Sarah} & \textbf{Martin}\\
+    \toprule
+    Q1 & False & NN & NAV\\
+Q2 & False & NN & NAV\\
+Q3 & False & YY & NAV\\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\vfill
+
+\tiny{
+
+\begin{enumerate}
+\item Is this query best answered with a pin on a map?
+\item Is a location explicit in the query?
+\item What type of query is this?
+\end{enumerate}
+
+\vfill
+
+\begin{multicols}{2}
+\begin{verbatim}
+YY = Yes -- with place name
+YN = Yes -- without place name
+NY = No (but still a place)
+NN = Not applicable 
+     (ie not explicit location and not a place)
+\end{verbatim}
+
+\columnbreak
+\begin{verbatim}
+IAD = INFORMATIONAL_ADVICE
+IDC = INFORMATIONAL_DIRECTED_CLOSED
+IDO = INFORMATIONAL_DIRECTED_OPEN
+ILI = INFORMATIONAL_LIST
+ILO = INFORMATIONAL_LOCATE
+IUN = INFORMATIONAL_UNDIRECTED
+NAV = NAVIGATIONAL
+RDE = RESOURCE_ENTERTAINMENT
+RDO = RESOURCE_DOWNLOAD
+RIN = RESOURCE_INTERACT
+ROB = RESOURCE_OBTAIN
+\end{verbatim}
+\end{multicols}
+}
+
+\end{frame}
+
+
+\begin{frame}[fragile]
+\frametitle{Query 9}
+\vspace{1em}
+
+\emph{Live-out Nannies}
+
+\vfill
+
+\begin{table}
+  \centering
+  \begin{tabular}{ l l l l }
+    & \textbf{Amy} & \textbf{Sarah} & \textbf{Martin}\\
+    \toprule
+    Q1 & False & NY & IUN\\
+Q2 & False & NY & ILO\\
+Q3 & False & NN & ILI\\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\vfill
+
+\tiny{
+
+\begin{enumerate}
+\item Is this query best answered with a pin on a map?
+\item Is a location explicit in the query?
+\item What type of query is this?
+\end{enumerate}
+
+\vfill
+
+\begin{multicols}{2}
+\begin{verbatim}
+YY = Yes -- with place name
+YN = Yes -- without place name
+NY = No (but still a place)
+NN = Not applicable 
+     (ie not explicit location and not a place)
+\end{verbatim}
+
+\columnbreak
+\begin{verbatim}
+IAD = INFORMATIONAL_ADVICE
+IDC = INFORMATIONAL_DIRECTED_CLOSED
+IDO = INFORMATIONAL_DIRECTED_OPEN
+ILI = INFORMATIONAL_LIST
+ILO = INFORMATIONAL_LOCATE
+IUN = INFORMATIONAL_UNDIRECTED
+NAV = NAVIGATIONAL
+RDE = RESOURCE_ENTERTAINMENT
+RDO = RESOURCE_DOWNLOAD
+RIN = RESOURCE_INTERACT
+ROB = RESOURCE_OBTAIN
+\end{verbatim}
+\end{multicols}
+}
+
+\end{frame}
+
+
+\begin{frame}[fragile]
+\frametitle{Query 10}
+\vspace{1em}
+
+\emph{Foodoo Sydney CBD is looking for Cafe all Rounders}
+
+\vfill
+
+\begin{table}
+  \centering
+  \begin{tabular}{ l l l l }
+    & \textbf{Amy} & \textbf{Sarah} & \textbf{Martin}\\
+    \toprule
+    Q1 & False & YY & NAV\\
+Q2 & False & YY & NAV\\
+Q3 & False & YY & NAV\\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\vfill
+
+\tiny{
+
+\begin{enumerate}
+\item Is this query best answered with a pin on a map?
+\item Is a location explicit in the query?
+\item What type of query is this?
+\end{enumerate}
+
+\vfill
+
+\begin{multicols}{2}
+\begin{verbatim}
+YY = Yes -- with place name
+YN = Yes -- without place name
+NY = No (but still a place)
+NN = Not applicable 
+     (ie not explicit location and not a place)
+\end{verbatim}
+
+\columnbreak
+\begin{verbatim}
+IAD = INFORMATIONAL_ADVICE
+IDC = INFORMATIONAL_DIRECTED_CLOSED
+IDO = INFORMATIONAL_DIRECTED_OPEN
+ILI = INFORMATIONAL_LIST
+ILO = INFORMATIONAL_LOCATE
+IUN = INFORMATIONAL_UNDIRECTED
+NAV = NAVIGATIONAL
+RDE = RESOURCE_ENTERTAINMENT
+RDO = RESOURCE_DOWNLOAD
+RIN = RESOURCE_INTERACT
+ROB = RESOURCE_OBTAIN
+\end{verbatim}
+\end{multicols}
+}
+
+\end{frame}
+
+
+\begin{frame}[fragile]
+\frametitle{Query 11}
+\vspace{1em}
+
+\emph{sale women}
+
+\vfill
+
+\begin{table}
+  \centering
+  \begin{tabular}{ l l l l }
+    & \textbf{Amy} & \textbf{Sarah} & \textbf{Martin}\\
+    \toprule
+    Q1 & False & NY & ILO\\
+Q2 & False & NY & ILI\\
+Q3 & True & NY & ILI\\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\vfill
+
+\tiny{
+
+\begin{enumerate}
+\item Is this query best answered with a pin on a map?
+\item Is a location explicit in the query?
+\item What type of query is this?
+\end{enumerate}
+
+\vfill
+
+\begin{multicols}{2}
+\begin{verbatim}
+YY = Yes -- with place name
+YN = Yes -- without place name
+NY = No (but still a place)
+NN = Not applicable 
+     (ie not explicit location and not a place)
+\end{verbatim}
+
+\columnbreak
+\begin{verbatim}
+IAD = INFORMATIONAL_ADVICE
+IDC = INFORMATIONAL_DIRECTED_CLOSED
+IDO = INFORMATIONAL_DIRECTED_OPEN
+ILI = INFORMATIONAL_LIST
+ILO = INFORMATIONAL_LOCATE
+IUN = INFORMATIONAL_UNDIRECTED
+NAV = NAVIGATIONAL
+RDE = RESOURCE_ENTERTAINMENT
+RDO = RESOURCE_DOWNLOAD
+RIN = RESOURCE_INTERACT
+ROB = RESOURCE_OBTAIN
+\end{verbatim}
+\end{multicols}
+}
+
+\end{frame}
+
+
+\begin{frame}[fragile]
+\frametitle{Query 12}
+\vspace{1em}
+
+\emph{the little black jacket}
+
+\vfill
+
+\begin{table}
+  \centering
+  \begin{tabular}{ l l l l }
+    & \textbf{Amy} & \textbf{Sarah} & \textbf{Martin}\\
+    \toprule
+    Q1 & False & NY & IUN\\
+Q2 & False & NY & ILO\\
+Q3 & False & NN & ROB\\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\vfill
+
+\tiny{
+
+\begin{enumerate}
+\item Is this query best answered with a pin on a map?
+\item Is a location explicit in the query?
+\item What type of query is this?
+\end{enumerate}
+
+\vfill
+
+\begin{multicols}{2}
+\begin{verbatim}
+YY = Yes -- with place name
+YN = Yes -- without place name
+NY = No (but still a place)
+NN = Not applicable 
+     (ie not explicit location and not a place)
+\end{verbatim}
+
+\columnbreak
+\begin{verbatim}
+IAD = INFORMATIONAL_ADVICE
+IDC = INFORMATIONAL_DIRECTED_CLOSED
+IDO = INFORMATIONAL_DIRECTED_OPEN
+ILI = INFORMATIONAL_LIST
+ILO = INFORMATIONAL_LOCATE
+IUN = INFORMATIONAL_UNDIRECTED
+NAV = NAVIGATIONAL
+RDE = RESOURCE_ENTERTAINMENT
+RDO = RESOURCE_DOWNLOAD
+RIN = RESOURCE_INTERACT
+ROB = RESOURCE_OBTAIN
+\end{verbatim}
+\end{multicols}
+}
+
+\end{frame}
+
+
+\begin{frame}[fragile]
+\frametitle{Query 13}
+\vspace{1em}
+
+\emph{how many nations and countries sigbed the antarctic treaty}
+
+\vfill
+
+\begin{table}
+  \centering
+  \begin{tabular}{ l l l l }
+    & \textbf{Amy} & \textbf{Sarah} & \textbf{Martin}\\
+    \toprule
+    Q1 & False & NN & IDC\\
+Q2 & False & NN & IDC\\
+Q3 & False & NN & IDC\\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\vfill
+
+\tiny{
+
+\begin{enumerate}
+\item Is this query best answered with a pin on a map?
+\item Is a location explicit in the query?
+\item What type of query is this?
+\end{enumerate}
+
+\vfill
+
+\begin{multicols}{2}
+\begin{verbatim}
+YY = Yes -- with place name
+YN = Yes -- without place name
+NY = No (but still a place)
+NN = Not applicable 
+     (ie not explicit location and not a place)
+\end{verbatim}
+
+\columnbreak
+\begin{verbatim}
+IAD = INFORMATIONAL_ADVICE
+IDC = INFORMATIONAL_DIRECTED_CLOSED
+IDO = INFORMATIONAL_DIRECTED_OPEN
+ILI = INFORMATIONAL_LIST
+ILO = INFORMATIONAL_LOCATE
+IUN = INFORMATIONAL_UNDIRECTED
+NAV = NAVIGATIONAL
+RDE = RESOURCE_ENTERTAINMENT
+RDO = RESOURCE_DOWNLOAD
+RIN = RESOURCE_INTERACT
+ROB = RESOURCE_OBTAIN
+\end{verbatim}
+\end{multicols}
+}
+
+\end{frame}
+
+
+\begin{frame}[fragile]
+\frametitle{Query 14}
+\vspace{1em}
+
+\emph{Flatshare}
+
+\vfill
+
+\begin{table}
+  \centering
+  \begin{tabular}{ l l l l }
+    & \textbf{Amy} & \textbf{Sarah} & \textbf{Martin}\\
+    \toprule
+    Q1 & False & NY & IUN\\
+Q2 & False & NY & ILI\\
+Q3 & True & NY & ILI\\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\vfill
+
+\tiny{
+
+\begin{enumerate}
+\item Is this query best answered with a pin on a map?
+\item Is a location explicit in the query?
+\item What type of query is this?
+\end{enumerate}
+
+\vfill
+
+\begin{multicols}{2}
+\begin{verbatim}
+YY = Yes -- with place name
+YN = Yes -- without place name
+NY = No (but still a place)
+NN = Not applicable 
+     (ie not explicit location and not a place)
+\end{verbatim}
+
+\columnbreak
+\begin{verbatim}
+IAD = INFORMATIONAL_ADVICE
+IDC = INFORMATIONAL_DIRECTED_CLOSED
+IDO = INFORMATIONAL_DIRECTED_OPEN
+ILI = INFORMATIONAL_LIST
+ILO = INFORMATIONAL_LOCATE
+IUN = INFORMATIONAL_UNDIRECTED
+NAV = NAVIGATIONAL
+RDE = RESOURCE_ENTERTAINMENT
+RDO = RESOURCE_DOWNLOAD
+RIN = RESOURCE_INTERACT
+ROB = RESOURCE_OBTAIN
+\end{verbatim}
+\end{multicols}
+}
+
+\end{frame}
+
+
+\begin{frame}[fragile]
+\frametitle{Query 15}
+\vspace{1em}
+
+\emph{preise im sefton playhouse}
+
+\vfill
+
+\begin{table}
+  \centering
+  \begin{tabular}{ l l l l }
+    & \textbf{Amy} & \textbf{Sarah} & \textbf{Martin}\\
+    \toprule
+    Q1 & False & YY & IDC\\
+Q2 & True & YY & IDC\\
+Q3 & False & YY & IDC\\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\vfill
+
+\tiny{
+
+\begin{enumerate}
+\item Is this query best answered with a pin on a map?
+\item Is a location explicit in the query?
+\item What type of query is this?
+\end{enumerate}
+
+\vfill
+
+\begin{multicols}{2}
+\begin{verbatim}
+YY = Yes -- with place name
+YN = Yes -- without place name
+NY = No (but still a place)
+NN = Not applicable 
+     (ie not explicit location and not a place)
+\end{verbatim}
+
+\columnbreak
+\begin{verbatim}
+IAD = INFORMATIONAL_ADVICE
+IDC = INFORMATIONAL_DIRECTED_CLOSED
+IDO = INFORMATIONAL_DIRECTED_OPEN
+ILI = INFORMATIONAL_LIST
+ILO = INFORMATIONAL_LOCATE
+IUN = INFORMATIONAL_UNDIRECTED
+NAV = NAVIGATIONAL
+RDE = RESOURCE_ENTERTAINMENT
+RDO = RESOURCE_DOWNLOAD
+RIN = RESOURCE_INTERACT
+ROB = RESOURCE_OBTAIN
+\end{verbatim}
+\end{multicols}
+}
+
+\end{frame}
+
+
+\begin{frame}[fragile]
+\frametitle{Query 16}
+\vspace{1em}
+
+\emph{tory burch patent zip wallet}
+
+\vfill
+
+\begin{table}
+  \centering
+  \begin{tabular}{ l l l l }
+    & \textbf{Amy} & \textbf{Sarah} & \textbf{Martin}\\
+    \toprule
+    Q1 & False & NN & IUN\\
+Q2 & False & NY & ILO\\
+Q3 & False & NN & ILI\\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\vfill
+
+\tiny{
+
+\begin{enumerate}
+\item Is this query best answered with a pin on a map?
+\item Is a location explicit in the query?
+\item What type of query is this?
+\end{enumerate}
+
+\vfill
+
+\begin{multicols}{2}
+\begin{verbatim}
+YY = Yes -- with place name
+YN = Yes -- without place name
+NY = No (but still a place)
+NN = Not applicable 
+     (ie not explicit location and not a place)
+\end{verbatim}
+
+\columnbreak
+\begin{verbatim}
+IAD = INFORMATIONAL_ADVICE
+IDC = INFORMATIONAL_DIRECTED_CLOSED
+IDO = INFORMATIONAL_DIRECTED_OPEN
+ILI = INFORMATIONAL_LIST
+ILO = INFORMATIONAL_LOCATE
+IUN = INFORMATIONAL_UNDIRECTED
+NAV = NAVIGATIONAL
+RDE = RESOURCE_ENTERTAINMENT
+RDO = RESOURCE_DOWNLOAD
+RIN = RESOURCE_INTERACT
+ROB = RESOURCE_OBTAIN
+\end{verbatim}
+\end{multicols}
+}
+
+\end{frame}
+
+
+\begin{frame}[fragile]
+\frametitle{Query 17}
+\vspace{1em}
+
+\emph{Gardening}
+
+\vfill
+
+\begin{table}
+  \centering
+  \begin{tabular}{ l l l l }
+    & \textbf{Amy} & \textbf{Sarah} & \textbf{Martin}\\
+    \toprule
+    Q1 & False & NY & IUN\\
+Q2 & False & NY & ILI\\
+Q3 & False & NN & IDO\\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\vfill
+
+\tiny{
+
+\begin{enumerate}
+\item Is this query best answered with a pin on a map?
+\item Is a location explicit in the query?
+\item What type of query is this?
+\end{enumerate}
+
+\vfill
+
+\begin{multicols}{2}
+\begin{verbatim}
+YY = Yes -- with place name
+YN = Yes -- without place name
+NY = No (but still a place)
+NN = Not applicable 
+     (ie not explicit location and not a place)
+\end{verbatim}
+
+\columnbreak
+\begin{verbatim}
+IAD = INFORMATIONAL_ADVICE
+IDC = INFORMATIONAL_DIRECTED_CLOSED
+IDO = INFORMATIONAL_DIRECTED_OPEN
+ILI = INFORMATIONAL_LIST
+ILO = INFORMATIONAL_LOCATE
+IUN = INFORMATIONAL_UNDIRECTED
+NAV = NAVIGATIONAL
+RDE = RESOURCE_ENTERTAINMENT
+RDO = RESOURCE_DOWNLOAD
+RIN = RESOURCE_INTERACT
+ROB = RESOURCE_OBTAIN
+\end{verbatim}
+\end{multicols}
+}
+
+\end{frame}
+
+
+\begin{frame}[fragile]
+\frametitle{Query 18}
+\vspace{1em}
+
+\emph{ogilvy}
+
+\vfill
+
+\begin{table}
+  \centering
+  \begin{tabular}{ l l l l }
+    & \textbf{Amy} & \textbf{Sarah} & \textbf{Martin}\\
+    \toprule
+    Q1 & False & NN & IUN\\
+Q2 & True & NY & NAV\\
+Q3 & True & NY & ILO\\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\vfill
+
+\tiny{
+
+\begin{enumerate}
+\item Is this query best answered with a pin on a map?
+\item Is a location explicit in the query?
+\item What type of query is this?
+\end{enumerate}
+
+\vfill
+
+\begin{multicols}{2}
+\begin{verbatim}
+YY = Yes -- with place name
+YN = Yes -- without place name
+NY = No (but still a place)
+NN = Not applicable 
+     (ie not explicit location and not a place)
+\end{verbatim}
+
+\columnbreak
+\begin{verbatim}
+IAD = INFORMATIONAL_ADVICE
+IDC = INFORMATIONAL_DIRECTED_CLOSED
+IDO = INFORMATIONAL_DIRECTED_OPEN
+ILI = INFORMATIONAL_LIST
+ILO = INFORMATIONAL_LOCATE
+IUN = INFORMATIONAL_UNDIRECTED
+NAV = NAVIGATIONAL
+RDE = RESOURCE_ENTERTAINMENT
+RDO = RESOURCE_DOWNLOAD
+RIN = RESOURCE_INTERACT
+ROB = RESOURCE_OBTAIN
+\end{verbatim}
+\end{multicols}
+}
+
+\end{frame}
+
+
+\begin{frame}[fragile]
+\frametitle{Query 19}
+\vspace{1em}
+
+\emph{noosa}
+
+\vfill
+
+\begin{table}
+  \centering
+  \begin{tabular}{ l l l l }
+    & \textbf{Amy} & \textbf{Sarah} & \textbf{Martin}\\
+    \toprule
+    Q1 & True & YY & IUN\\
+Q2 & True & YY & IUN\\
+Q3 & True & YY & ILO\\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\vfill
+
+\tiny{
+
+\begin{enumerate}
+\item Is this query best answered with a pin on a map?
+\item Is a location explicit in the query?
+\item What type of query is this?
+\end{enumerate}
+
+\vfill
+
+\begin{multicols}{2}
+\begin{verbatim}
+YY = Yes -- with place name
+YN = Yes -- without place name
+NY = No (but still a place)
+NN = Not applicable 
+     (ie not explicit location and not a place)
+\end{verbatim}
+
+\columnbreak
+\begin{verbatim}
+IAD = INFORMATIONAL_ADVICE
+IDC = INFORMATIONAL_DIRECTED_CLOSED
+IDO = INFORMATIONAL_DIRECTED_OPEN
+ILI = INFORMATIONAL_LIST
+ILO = INFORMATIONAL_LOCATE
+IUN = INFORMATIONAL_UNDIRECTED
+NAV = NAVIGATIONAL
+RDE = RESOURCE_ENTERTAINMENT
+RDO = RESOURCE_DOWNLOAD
+RIN = RESOURCE_INTERACT
+ROB = RESOURCE_OBTAIN
+\end{verbatim}
+\end{multicols}
+}
+
+\end{frame}
+
+
+\begin{frame}[fragile]
+\frametitle{Query 20}
+\vspace{1em}
+
+\emph{onlinecomputers}
+
+\vfill
+
+\begin{table}
+  \centering
+  \begin{tabular}{ l l l l }
+    & \textbf{Amy} & \textbf{Sarah} & \textbf{Martin}\\
+    \toprule
+    Q1 & False & NY & IUN\\
+Q2 & False & NY & ILO\\
+Q3 & False & NN & NAV\\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\vfill
+
+\tiny{
+
+\begin{enumerate}
+\item Is this query best answered with a pin on a map?
+\item Is a location explicit in the query?
+\item What type of query is this?
+\end{enumerate}
+
+\vfill
+
+\begin{multicols}{2}
+\begin{verbatim}
+YY = Yes -- with place name
+YN = Yes -- without place name
+NY = No (but still a place)
+NN = Not applicable 
+     (ie not explicit location and not a place)
+\end{verbatim}
+
+\columnbreak
+\begin{verbatim}
+IAD = INFORMATIONAL_ADVICE
+IDC = INFORMATIONAL_DIRECTED_CLOSED
+IDO = INFORMATIONAL_DIRECTED_OPEN
+ILI = INFORMATIONAL_LIST
+ILO = INFORMATIONAL_LOCATE
+IUN = INFORMATIONAL_UNDIRECTED
+NAV = NAVIGATIONAL
+RDE = RESOURCE_ENTERTAINMENT
+RDO = RESOURCE_DOWNLOAD
+RIN = RESOURCE_INTERACT
+ROB = RESOURCE_OBTAIN
+\end{verbatim}
+\end{multicols}
+}
+
+\end{frame}
+
+
+\begin{frame}[fragile]
+\frametitle{Query 21}
+\vspace{1em}
+
+\emph{Other Jobs}
+
+\vfill
+
+\begin{table}
+  \centering
+  \begin{tabular}{ l l l l }
+    & \textbf{Amy} & \textbf{Sarah} & \textbf{Martin}\\
+    \toprule
+    Q1 & False & NY & ILI\\
+Q2 & False & NY & IAD\\
+Q3 & True & NY & ILI\\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\vfill
+
+\tiny{
+
+\begin{enumerate}
+\item Is this query best answered with a pin on a map?
+\item Is a location explicit in the query?
+\item What type of query is this?
+\end{enumerate}
+
+\vfill
+
+\begin{multicols}{2}
+\begin{verbatim}
+YY = Yes -- with place name
+YN = Yes -- without place name
+NY = No (but still a place)
+NN = Not applicable 
+     (ie not explicit location and not a place)
+\end{verbatim}
+
+\columnbreak
+\begin{verbatim}
+IAD = INFORMATIONAL_ADVICE
+IDC = INFORMATIONAL_DIRECTED_CLOSED
+IDO = INFORMATIONAL_DIRECTED_OPEN
+ILI = INFORMATIONAL_LIST
+ILO = INFORMATIONAL_LOCATE
+IUN = INFORMATIONAL_UNDIRECTED
+NAV = NAVIGATIONAL
+RDE = RESOURCE_ENTERTAINMENT
+RDO = RESOURCE_DOWNLOAD
+RIN = RESOURCE_INTERACT
+ROB = RESOURCE_OBTAIN
+\end{verbatim}
+\end{multicols}
+}
+
+\end{frame}
+
+
+\begin{frame}[fragile]
+\frametitle{Query 22}
+\vspace{1em}
+
+\emph{skechers}
+
+\vfill
+
+\begin{table}
+  \centering
+  \begin{tabular}{ l l l l }
+    & \textbf{Amy} & \textbf{Sarah} & \textbf{Martin}\\
+    \toprule
+    Q1 & False & NN & IUN\\
+Q2 & False & NY & ILO\\
+Q3 & True & NY & ILO\\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\vfill
+
+\tiny{
+
+\begin{enumerate}
+\item Is this query best answered with a pin on a map?
+\item Is a location explicit in the query?
+\item What type of query is this?
+\end{enumerate}
+
+\vfill
+
+\begin{multicols}{2}
+\begin{verbatim}
+YY = Yes -- with place name
+YN = Yes -- without place name
+NY = No (but still a place)
+NN = Not applicable 
+     (ie not explicit location and not a place)
+\end{verbatim}
+
+\columnbreak
+\begin{verbatim}
+IAD = INFORMATIONAL_ADVICE
+IDC = INFORMATIONAL_DIRECTED_CLOSED
+IDO = INFORMATIONAL_DIRECTED_OPEN
+ILI = INFORMATIONAL_LIST
+ILO = INFORMATIONAL_LOCATE
+IUN = INFORMATIONAL_UNDIRECTED
+NAV = NAVIGATIONAL
+RDE = RESOURCE_ENTERTAINMENT
+RDO = RESOURCE_DOWNLOAD
+RIN = RESOURCE_INTERACT
+ROB = RESOURCE_OBTAIN
+\end{verbatim}
+\end{multicols}
+}
+
+\end{frame}
+
+
+\begin{frame}[fragile]
+\frametitle{Query 23}
+\vspace{1em}
+
+\emph{Hospitality}
+
+\vfill
+
+\begin{table}
+  \centering
+  \begin{tabular}{ l l l l }
+    & \textbf{Amy} & \textbf{Sarah} & \textbf{Martin}\\
+    \toprule
+    Q1 & False & NN & IUN\\
+Q2 & False & NN & IUN\\
+Q3 & True & NY & ILO\\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\vfill
+
+\tiny{
+
+\begin{enumerate}
+\item Is this query best answered with a pin on a map?
+\item Is a location explicit in the query?
+\item What type of query is this?
+\end{enumerate}
+
+\vfill
+
+\begin{multicols}{2}
+\begin{verbatim}
+YY = Yes -- with place name
+YN = Yes -- without place name
+NY = No (but still a place)
+NN = Not applicable 
+     (ie not explicit location and not a place)
+\end{verbatim}
+
+\columnbreak
+\begin{verbatim}
+IAD = INFORMATIONAL_ADVICE
+IDC = INFORMATIONAL_DIRECTED_CLOSED
+IDO = INFORMATIONAL_DIRECTED_OPEN
+ILI = INFORMATIONAL_LIST
+ILO = INFORMATIONAL_LOCATE
+IUN = INFORMATIONAL_UNDIRECTED
+NAV = NAVIGATIONAL
+RDE = RESOURCE_ENTERTAINMENT
+RDO = RESOURCE_DOWNLOAD
+RIN = RESOURCE_INTERACT
+ROB = RESOURCE_OBTAIN
+\end{verbatim}
+\end{multicols}
+}
+
+\end{frame}
+
+
+\begin{frame}[fragile]
+\frametitle{Query 24}
+\vspace{1em}
+
+\emph{www.facebook.com}
+
+\vfill
+
+\begin{table}
+  \centering
+  \begin{tabular}{ l l l l }
+    & \textbf{Amy} & \textbf{Sarah} & \textbf{Martin}\\
+    \toprule
+    Q1 & False & NN & NAV\\
+Q2 & False & NN & NAV\\
+Q3 & False & NN & NAV\\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\vfill
+
+\tiny{
+
+\begin{enumerate}
+\item Is this query best answered with a pin on a map?
+\item Is a location explicit in the query?
+\item What type of query is this?
+\end{enumerate}
+
+\vfill
+
+\begin{multicols}{2}
+\begin{verbatim}
+YY = Yes -- with place name
+YN = Yes -- without place name
+NY = No (but still a place)
+NN = Not applicable 
+     (ie not explicit location and not a place)
+\end{verbatim}
+
+\columnbreak
+\begin{verbatim}
+IAD = INFORMATIONAL_ADVICE
+IDC = INFORMATIONAL_DIRECTED_CLOSED
+IDO = INFORMATIONAL_DIRECTED_OPEN
+ILI = INFORMATIONAL_LIST
+ILO = INFORMATIONAL_LOCATE
+IUN = INFORMATIONAL_UNDIRECTED
+NAV = NAVIGATIONAL
+RDE = RESOURCE_ENTERTAINMENT
+RDO = RESOURCE_DOWNLOAD
+RIN = RESOURCE_INTERACT
+ROB = RESOURCE_OBTAIN
+\end{verbatim}
+\end{multicols}
+}
+
+\end{frame}
+
+
+\begin{frame}[fragile]
+\frametitle{Query 25}
+\vspace{1em}
+
+\emph{gilly hicks sydney australia}
+
+\vfill
+
+\begin{table}
+  \centering
+  \begin{tabular}{ l l l l }
+    & \textbf{Amy} & \textbf{Sarah} & \textbf{Martin}\\
+    \toprule
+    Q1 & True & YY & ILO\\
+Q2 & False & YY & IDO\\
+Q3 & True & YY & ILO\\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\vfill
+
+\tiny{
+
+\begin{enumerate}
+\item Is this query best answered with a pin on a map?
+\item Is a location explicit in the query?
+\item What type of query is this?
+\end{enumerate}
+
+\vfill
+
+\begin{multicols}{2}
+\begin{verbatim}
+YY = Yes -- with place name
+YN = Yes -- without place name
+NY = No (but still a place)
+NN = Not applicable 
+     (ie not explicit location and not a place)
+\end{verbatim}
+
+\columnbreak
+\begin{verbatim}
+IAD = INFORMATIONAL_ADVICE
+IDC = INFORMATIONAL_DIRECTED_CLOSED
+IDO = INFORMATIONAL_DIRECTED_OPEN
+ILI = INFORMATIONAL_LIST
+ILO = INFORMATIONAL_LOCATE
+IUN = INFORMATIONAL_UNDIRECTED
+NAV = NAVIGATIONAL
+RDE = RESOURCE_ENTERTAINMENT
+RDO = RESOURCE_DOWNLOAD
+RIN = RESOURCE_INTERACT
+ROB = RESOURCE_OBTAIN
+\end{verbatim}
+\end{multicols}
+}
+
+\end{frame}
+
+
+\begin{frame}[fragile]
+\frametitle{Query 26}
+\vspace{1em}
+
+\emph{gmail}
+
+\vfill
+
+\begin{table}
+  \centering
+  \begin{tabular}{ l l l l }
+    & \textbf{Amy} & \textbf{Sarah} & \textbf{Martin}\\
+    \toprule
+    Q1 & False & NN & NAV\\
+Q2 & False & NN & NAV\\
+Q3 & False & NN & NAV\\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\vfill
+
+\tiny{
+
+\begin{enumerate}
+\item Is this query best answered with a pin on a map?
+\item Is a location explicit in the query?
+\item What type of query is this?
+\end{enumerate}
+
+\vfill
+
+\begin{multicols}{2}
+\begin{verbatim}
+YY = Yes -- with place name
+YN = Yes -- without place name
+NY = No (but still a place)
+NN = Not applicable 
+     (ie not explicit location and not a place)
+\end{verbatim}
+
+\columnbreak
+\begin{verbatim}
+IAD = INFORMATIONAL_ADVICE
+IDC = INFORMATIONAL_DIRECTED_CLOSED
+IDO = INFORMATIONAL_DIRECTED_OPEN
+ILI = INFORMATIONAL_LIST
+ILO = INFORMATIONAL_LOCATE
+IUN = INFORMATIONAL_UNDIRECTED
+NAV = NAVIGATIONAL
+RDE = RESOURCE_ENTERTAINMENT
+RDO = RESOURCE_DOWNLOAD
+RIN = RESOURCE_INTERACT
+ROB = RESOURCE_OBTAIN
+\end{verbatim}
+\end{multicols}
+}
+
+\end{frame}
+
+
+\begin{frame}[fragile]
+\frametitle{Query 27}
+\vspace{1em}
+
+\emph{cube}
+
+\vfill
+
+\begin{table}
+  \centering
+  \begin{tabular}{ l l l l }
+    & \textbf{Amy} & \textbf{Sarah} & \textbf{Martin}\\
+    \toprule
+    Q1 & False & NN & IUN\\
+Q2 & False & NY & IUN\\
+Q3 & False & NN & IDO\\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\vfill
+
+\tiny{
+
+\begin{enumerate}
+\item Is this query best answered with a pin on a map?
+\item Is a location explicit in the query?
+\item What type of query is this?
+\end{enumerate}
+
+\vfill
+
+\begin{multicols}{2}
+\begin{verbatim}
+YY = Yes -- with place name
+YN = Yes -- without place name
+NY = No (but still a place)
+NN = Not applicable 
+     (ie not explicit location and not a place)
+\end{verbatim}
+
+\columnbreak
+\begin{verbatim}
+IAD = INFORMATIONAL_ADVICE
+IDC = INFORMATIONAL_DIRECTED_CLOSED
+IDO = INFORMATIONAL_DIRECTED_OPEN
+ILI = INFORMATIONAL_LIST
+ILO = INFORMATIONAL_LOCATE
+IUN = INFORMATIONAL_UNDIRECTED
+NAV = NAVIGATIONAL
+RDE = RESOURCE_ENTERTAINMENT
+RDO = RESOURCE_DOWNLOAD
+RIN = RESOURCE_INTERACT
+ROB = RESOURCE_OBTAIN
+\end{verbatim}
+\end{multicols}
+}
+
+\end{frame}
+
+
+\begin{frame}[fragile]
+\frametitle{Query 28}
+\vspace{1em}
+
+\emph{sushi market street australia}
+
+\vfill
+
+\begin{table}
+  \centering
+  \begin{tabular}{ l l l l }
+    & \textbf{Amy} & \textbf{Sarah} & \textbf{Martin}\\
+    \toprule
+    Q1 & True & YY & ILO\\
+Q2 & True & YY & ILO\\
+Q3 & True & YY & ILO\\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\vfill
+
+\tiny{
+
+\begin{enumerate}
+\item Is this query best answered with a pin on a map?
+\item Is a location explicit in the query?
+\item What type of query is this?
+\end{enumerate}
+
+\vfill
+
+\begin{multicols}{2}
+\begin{verbatim}
+YY = Yes -- with place name
+YN = Yes -- without place name
+NY = No (but still a place)
+NN = Not applicable 
+     (ie not explicit location and not a place)
+\end{verbatim}
+
+\columnbreak
+\begin{verbatim}
+IAD = INFORMATIONAL_ADVICE
+IDC = INFORMATIONAL_DIRECTED_CLOSED
+IDO = INFORMATIONAL_DIRECTED_OPEN
+ILI = INFORMATIONAL_LIST
+ILO = INFORMATIONAL_LOCATE
+IUN = INFORMATIONAL_UNDIRECTED
+NAV = NAVIGATIONAL
+RDE = RESOURCE_ENTERTAINMENT
+RDO = RESOURCE_DOWNLOAD
+RIN = RESOURCE_INTERACT
+ROB = RESOURCE_OBTAIN
+\end{verbatim}
+\end{multicols}
+}
+
+\end{frame}
+
+
+\begin{frame}[fragile]
+\frametitle{Query 29}
+\vspace{1em}
+
+\emph{Jobs}
+
+\vfill
+
+\begin{table}
+  \centering
+  \begin{tabular}{ l l l l }
+    & \textbf{Amy} & \textbf{Sarah} & \textbf{Martin}\\
+    \toprule
+    Q1 & False & NY & ILI\\
+Q2 & False & NY & ILI\\
+Q3 & True & NY & ILI\\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\vfill
+
+\tiny{
+
+\begin{enumerate}
+\item Is this query best answered with a pin on a map?
+\item Is a location explicit in the query?
+\item What type of query is this?
+\end{enumerate}
+
+\vfill
+
+\begin{multicols}{2}
+\begin{verbatim}
+YY = Yes -- with place name
+YN = Yes -- without place name
+NY = No (but still a place)
+NN = Not applicable 
+     (ie not explicit location and not a place)
+\end{verbatim}
+
+\columnbreak
+\begin{verbatim}
+IAD = INFORMATIONAL_ADVICE
+IDC = INFORMATIONAL_DIRECTED_CLOSED
+IDO = INFORMATIONAL_DIRECTED_OPEN
+ILI = INFORMATIONAL_LIST
+ILO = INFORMATIONAL_LOCATE
+IUN = INFORMATIONAL_UNDIRECTED
+NAV = NAVIGATIONAL
+RDE = RESOURCE_ENTERTAINMENT
+RDO = RESOURCE_DOWNLOAD
+RIN = RESOURCE_INTERACT
+ROB = RESOURCE_OBTAIN
+\end{verbatim}
+\end{multicols}
+}
+
+\end{frame}
+
+
+\begin{frame}[fragile]
+\frametitle{Query 30}
+\vspace{1em}
+
+\emph{nike free 5.0}
+
+\vfill
+
+\begin{table}
+  \centering
+  \begin{tabular}{ l l l l }
+    & \textbf{Amy} & \textbf{Sarah} & \textbf{Martin}\\
+    \toprule
+    Q1 & False & NY & IUN\\
+Q2 & False & NY & ILO\\
+Q3 & True & NY & ILI\\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\vfill
+
+\tiny{
+
+\begin{enumerate}
+\item Is this query best answered with a pin on a map?
+\item Is a location explicit in the query?
+\item What type of query is this?
+\end{enumerate}
+
+\vfill
+
+\begin{multicols}{2}
+\begin{verbatim}
+YY = Yes -- with place name
+YN = Yes -- without place name
+NY = No (but still a place)
+NN = Not applicable 
+     (ie not explicit location and not a place)
+\end{verbatim}
+
+\columnbreak
+\begin{verbatim}
+IAD = INFORMATIONAL_ADVICE
+IDC = INFORMATIONAL_DIRECTED_CLOSED
+IDO = INFORMATIONAL_DIRECTED_OPEN
+ILI = INFORMATIONAL_LIST
+ILO = INFORMATIONAL_LOCATE
+IUN = INFORMATIONAL_UNDIRECTED
+NAV = NAVIGATIONAL
+RDE = RESOURCE_ENTERTAINMENT
+RDO = RESOURCE_DOWNLOAD
+RIN = RESOURCE_INTERACT
+ROB = RESOURCE_OBTAIN
+\end{verbatim}
+\end{multicols}
+}
+
+\end{frame}
+
+
+\begin{frame}[fragile]
+\frametitle{Query 31}
+\vspace{1em}
+
+\emph{negative-ions sydney}
+
+\vfill
+
+\begin{table}
+  \centering
+  \begin{tabular}{ l l l l }
+    & \textbf{Amy} & \textbf{Sarah} & \textbf{Martin}\\
+    \toprule
+    Q1 & True & YY & ILO\\
+Q2 & False & YY & ILO\\
+Q3 & True & NY & ILO\\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\vfill
+
+\tiny{
+
+\begin{enumerate}
+\item Is this query best answered with a pin on a map?
+\item Is a location explicit in the query?
+\item What type of query is this?
+\end{enumerate}
+
+\vfill
+
+\begin{multicols}{2}
+\begin{verbatim}
+YY = Yes -- with place name
+YN = Yes -- without place name
+NY = No (but still a place)
+NN = Not applicable 
+     (ie not explicit location and not a place)
+\end{verbatim}
+
+\columnbreak
+\begin{verbatim}
+IAD = INFORMATIONAL_ADVICE
+IDC = INFORMATIONAL_DIRECTED_CLOSED
+IDO = INFORMATIONAL_DIRECTED_OPEN
+ILI = INFORMATIONAL_LIST
+ILO = INFORMATIONAL_LOCATE
+IUN = INFORMATIONAL_UNDIRECTED
+NAV = NAVIGATIONAL
+RDE = RESOURCE_ENTERTAINMENT
+RDO = RESOURCE_DOWNLOAD
+RIN = RESOURCE_INTERACT
+ROB = RESOURCE_OBTAIN
+\end{verbatim}
+\end{multicols}
+}
+
+\end{frame}
+
+
+\begin{frame}[fragile]
+\frametitle{Query 32}
+\vspace{1em}
+
+\emph{gucci}
+
+\vfill
+
+\begin{table}
+  \centering
+  \begin{tabular}{ l l l l }
+    & \textbf{Amy} & \textbf{Sarah} & \textbf{Martin}\\
+    \toprule
+    Q1 & False & NN & IUN\\
+Q2 & True & NY & ILO\\
+Q3 & True & NY & ILO\\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\vfill
+
+\tiny{
+
+\begin{enumerate}
+\item Is this query best answered with a pin on a map?
+\item Is a location explicit in the query?
+\item What type of query is this?
+\end{enumerate}
+
+\vfill
+
+\begin{multicols}{2}
+\begin{verbatim}
+YY = Yes -- with place name
+YN = Yes -- without place name
+NY = No (but still a place)
+NN = Not applicable 
+     (ie not explicit location and not a place)
+\end{verbatim}
+
+\columnbreak
+\begin{verbatim}
+IAD = INFORMATIONAL_ADVICE
+IDC = INFORMATIONAL_DIRECTED_CLOSED
+IDO = INFORMATIONAL_DIRECTED_OPEN
+ILI = INFORMATIONAL_LIST
+ILO = INFORMATIONAL_LOCATE
+IUN = INFORMATIONAL_UNDIRECTED
+NAV = NAVIGATIONAL
+RDE = RESOURCE_ENTERTAINMENT
+RDO = RESOURCE_DOWNLOAD
+RIN = RESOURCE_INTERACT
+ROB = RESOURCE_OBTAIN
+\end{verbatim}
+\end{multicols}
+}
+
+\end{frame}
+
+
+\begin{frame}[fragile]
+\frametitle{Query 33}
+\vspace{1em}
+
+\emph{google}
+
+\vfill
+
+\begin{table}
+  \centering
+  \begin{tabular}{ l l l l }
+    & \textbf{Amy} & \textbf{Sarah} & \textbf{Martin}\\
+    \toprule
+    Q1 & False & NN & NAV\\
+Q2 & False & NN & NAV\\
+Q3 & False & NN & NAV\\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\vfill
+
+\tiny{
+
+\begin{enumerate}
+\item Is this query best answered with a pin on a map?
+\item Is a location explicit in the query?
+\item What type of query is this?
+\end{enumerate}
+
+\vfill
+
+\begin{multicols}{2}
+\begin{verbatim}
+YY = Yes -- with place name
+YN = Yes -- without place name
+NY = No (but still a place)
+NN = Not applicable 
+     (ie not explicit location and not a place)
+\end{verbatim}
+
+\columnbreak
+\begin{verbatim}
+IAD = INFORMATIONAL_ADVICE
+IDC = INFORMATIONAL_DIRECTED_CLOSED
+IDO = INFORMATIONAL_DIRECTED_OPEN
+ILI = INFORMATIONAL_LIST
+ILO = INFORMATIONAL_LOCATE
+IUN = INFORMATIONAL_UNDIRECTED
+NAV = NAVIGATIONAL
+RDE = RESOURCE_ENTERTAINMENT
+RDO = RESOURCE_DOWNLOAD
+RIN = RESOURCE_INTERACT
+ROB = RESOURCE_OBTAIN
+\end{verbatim}
+\end{multicols}
+}
+
+\end{frame}
+
+
+\begin{frame}[fragile]
+\frametitle{Query 34}
+\vspace{1em}
+
+\emph{sa law society}
+
+\vfill
+
+\begin{table}
+  \centering
+  \begin{tabular}{ l l l l }
+    & \textbf{Amy} & \textbf{Sarah} & \textbf{Martin}\\
+    \toprule
+    Q1 & False & YY & IUN\\
+Q2 & False & YY & NAV\\
+Q3 & False & YY & ILI\\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\vfill
+
+\tiny{
+
+\begin{enumerate}
+\item Is this query best answered with a pin on a map?
+\item Is a location explicit in the query?
+\item What type of query is this?
+\end{enumerate}
+
+\vfill
+
+\begin{multicols}{2}
+\begin{verbatim}
+YY = Yes -- with place name
+YN = Yes -- without place name
+NY = No (but still a place)
+NN = Not applicable 
+     (ie not explicit location and not a place)
+\end{verbatim}
+
+\columnbreak
+\begin{verbatim}
+IAD = INFORMATIONAL_ADVICE
+IDC = INFORMATIONAL_DIRECTED_CLOSED
+IDO = INFORMATIONAL_DIRECTED_OPEN
+ILI = INFORMATIONAL_LIST
+ILO = INFORMATIONAL_LOCATE
+IUN = INFORMATIONAL_UNDIRECTED
+NAV = NAVIGATIONAL
+RDE = RESOURCE_ENTERTAINMENT
+RDO = RESOURCE_DOWNLOAD
+RIN = RESOURCE_INTERACT
+ROB = RESOURCE_OBTAIN
+\end{verbatim}
+\end{multicols}
+}
+
+\end{frame}
+
+
+\begin{frame}[fragile]
+\frametitle{Query 35}
+\vspace{1em}
+
+\emph{3D47A7000i review}
+
+\vfill
+
+\begin{table}
+  \centering
+  \begin{tabular}{ l l l l }
+    & \textbf{Amy} & \textbf{Sarah} & \textbf{Martin}\\
+    \toprule
+    Q1 & False & NN & ILI\\
+Q2 & False & NN & IDO\\
+Q3 & False & NN & IAD\\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\vfill
+
+\tiny{
+
+\begin{enumerate}
+\item Is this query best answered with a pin on a map?
+\item Is a location explicit in the query?
+\item What type of query is this?
+\end{enumerate}
+
+\vfill
+
+\begin{multicols}{2}
+\begin{verbatim}
+YY = Yes -- with place name
+YN = Yes -- without place name
+NY = No (but still a place)
+NN = Not applicable 
+     (ie not explicit location and not a place)
+\end{verbatim}
+
+\columnbreak
+\begin{verbatim}
+IAD = INFORMATIONAL_ADVICE
+IDC = INFORMATIONAL_DIRECTED_CLOSED
+IDO = INFORMATIONAL_DIRECTED_OPEN
+ILI = INFORMATIONAL_LIST
+ILO = INFORMATIONAL_LOCATE
+IUN = INFORMATIONAL_UNDIRECTED
+NAV = NAVIGATIONAL
+RDE = RESOURCE_ENTERTAINMENT
+RDO = RESOURCE_DOWNLOAD
+RIN = RESOURCE_INTERACT
+ROB = RESOURCE_OBTAIN
+\end{verbatim}
+\end{multicols}
+}
+
+\end{frame}
+
+
+\begin{frame}[fragile]
+\frametitle{Query 36}
+\vspace{1em}
+
+\emph{post office in rhodes}
+
+\vfill
+
+\begin{table}
+  \centering
+  \begin{tabular}{ l l l l }
+    & \textbf{Amy} & \textbf{Sarah} & \textbf{Martin}\\
+    \toprule
+    Q1 & True & YY & ILO\\
+Q2 & True & YY & ILO\\
+Q3 & True & YY & ILO\\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\vfill
+
+\tiny{
+
+\begin{enumerate}
+\item Is this query best answered with a pin on a map?
+\item Is a location explicit in the query?
+\item What type of query is this?
+\end{enumerate}
+
+\vfill
+
+\begin{multicols}{2}
+\begin{verbatim}
+YY = Yes -- with place name
+YN = Yes -- without place name
+NY = No (but still a place)
+NN = Not applicable 
+     (ie not explicit location and not a place)
+\end{verbatim}
+
+\columnbreak
+\begin{verbatim}
+IAD = INFORMATIONAL_ADVICE
+IDC = INFORMATIONAL_DIRECTED_CLOSED
+IDO = INFORMATIONAL_DIRECTED_OPEN
+ILI = INFORMATIONAL_LIST
+ILO = INFORMATIONAL_LOCATE
+IUN = INFORMATIONAL_UNDIRECTED
+NAV = NAVIGATIONAL
+RDE = RESOURCE_ENTERTAINMENT
+RDO = RESOURCE_DOWNLOAD
+RIN = RESOURCE_INTERACT
+ROB = RESOURCE_OBTAIN
+\end{verbatim}
+\end{multicols}
+}
+
+\end{frame}
+
+
+\begin{frame}[fragile]
+\frametitle{Query 37}
+\vspace{1em}
+
+\emph{nz copyright tribuna'}
+
+\vfill
+
+\begin{table}
+  \centering
+  \begin{tabular}{ l l l l }
+    & \textbf{Amy} & \textbf{Sarah} & \textbf{Martin}\\
+    \toprule
+    Q1 & False & YY & IUN\\
+Q2 & False & NN & IUN\\
+Q3 & False & YY & NAV\\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\vfill
+
+\tiny{
+
+\begin{enumerate}
+\item Is this query best answered with a pin on a map?
+\item Is a location explicit in the query?
+\item What type of query is this?
+\end{enumerate}
+
+\vfill
+
+\begin{multicols}{2}
+\begin{verbatim}
+YY = Yes -- with place name
+YN = Yes -- without place name
+NY = No (but still a place)
+NN = Not applicable 
+     (ie not explicit location and not a place)
+\end{verbatim}
+
+\columnbreak
+\begin{verbatim}
+IAD = INFORMATIONAL_ADVICE
+IDC = INFORMATIONAL_DIRECTED_CLOSED
+IDO = INFORMATIONAL_DIRECTED_OPEN
+ILI = INFORMATIONAL_LIST
+ILO = INFORMATIONAL_LOCATE
+IUN = INFORMATIONAL_UNDIRECTED
+NAV = NAVIGATIONAL
+RDE = RESOURCE_ENTERTAINMENT
+RDO = RESOURCE_DOWNLOAD
+RIN = RESOURCE_INTERACT
+ROB = RESOURCE_OBTAIN
+\end{verbatim}
+\end{multicols}
+}
+
+\end{frame}
+
+
+\begin{frame}[fragile]
+\frametitle{Query 38}
+\vspace{1em}
+
+\emph{bn2411 prad}
+
+\vfill
+
+\begin{table}
+  \centering
+  \begin{tabular}{ l l l l }
+    & \textbf{Amy} & \textbf{Sarah} & \textbf{Martin}\\
+    \toprule
+    Q1 & False & NN & IUN\\
+Q2 & False & NN & ILO\\
+Q3 & False & NN & ILO\\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\vfill
+
+\tiny{
+
+\begin{enumerate}
+\item Is this query best answered with a pin on a map?
+\item Is a location explicit in the query?
+\item What type of query is this?
+\end{enumerate}
+
+\vfill
+
+\begin{multicols}{2}
+\begin{verbatim}
+YY = Yes -- with place name
+YN = Yes -- without place name
+NY = No (but still a place)
+NN = Not applicable 
+     (ie not explicit location and not a place)
+\end{verbatim}
+
+\columnbreak
+\begin{verbatim}
+IAD = INFORMATIONAL_ADVICE
+IDC = INFORMATIONAL_DIRECTED_CLOSED
+IDO = INFORMATIONAL_DIRECTED_OPEN
+ILI = INFORMATIONAL_LIST
+ILO = INFORMATIONAL_LOCATE
+IUN = INFORMATIONAL_UNDIRECTED
+NAV = NAVIGATIONAL
+RDE = RESOURCE_ENTERTAINMENT
+RDO = RESOURCE_DOWNLOAD
+RIN = RESOURCE_INTERACT
+ROB = RESOURCE_OBTAIN
+\end{verbatim}
+\end{multicols}
+}
+
+\end{frame}
+
+
+\begin{frame}[fragile]
+\frametitle{Query 39}
+\vspace{1em}
+
+\emph{bobin lace lesson sydney}
+
+\vfill
+
+\begin{table}
+  \centering
+  \begin{tabular}{ l l l l }
+    & \textbf{Amy} & \textbf{Sarah} & \textbf{Martin}\\
+    \toprule
+    Q1 & True & YY & ILO\\
+Q2 & True & YY & ILO\\
+Q3 & True & YY & ILO\\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\vfill
+
+\tiny{
+
+\begin{enumerate}
+\item Is this query best answered with a pin on a map?
+\item Is a location explicit in the query?
+\item What type of query is this?
+\end{enumerate}
+
+\vfill
+
+\begin{multicols}{2}
+\begin{verbatim}
+YY = Yes -- with place name
+YN = Yes -- without place name
+NY = No (but still a place)
+NN = Not applicable 
+     (ie not explicit location and not a place)
+\end{verbatim}
+
+\columnbreak
+\begin{verbatim}
+IAD = INFORMATIONAL_ADVICE
+IDC = INFORMATIONAL_DIRECTED_CLOSED
+IDO = INFORMATIONAL_DIRECTED_OPEN
+ILI = INFORMATIONAL_LIST
+ILO = INFORMATIONAL_LOCATE
+IUN = INFORMATIONAL_UNDIRECTED
+NAV = NAVIGATIONAL
+RDE = RESOURCE_ENTERTAINMENT
+RDO = RESOURCE_DOWNLOAD
+RIN = RESOURCE_INTERACT
+ROB = RESOURCE_OBTAIN
+\end{verbatim}
+\end{multicols}
+}
+
+\end{frame}
+
+
+\begin{frame}[fragile]
+\frametitle{Query 40}
+\vspace{1em}
+
+\emph{sony xperia s outright}
+
+\vfill
+
+\begin{table}
+  \centering
+  \begin{tabular}{ l l l l }
+    & \textbf{Amy} & \textbf{Sarah} & \textbf{Martin}\\
+    \toprule
+    Q1 & False & NY & IDC\\
+Q2 & False & NY & RIN\\
+Q3 & False & NN & ROB\\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\vfill
+
+\tiny{
+
+\begin{enumerate}
+\item Is this query best answered with a pin on a map?
+\item Is a location explicit in the query?
+\item What type of query is this?
+\end{enumerate}
+
+\vfill
+
+\begin{multicols}{2}
+\begin{verbatim}
+YY = Yes -- with place name
+YN = Yes -- without place name
+NY = No (but still a place)
+NN = Not applicable 
+     (ie not explicit location and not a place)
+\end{verbatim}
+
+\columnbreak
+\begin{verbatim}
+IAD = INFORMATIONAL_ADVICE
+IDC = INFORMATIONAL_DIRECTED_CLOSED
+IDO = INFORMATIONAL_DIRECTED_OPEN
+ILI = INFORMATIONAL_LIST
+ILO = INFORMATIONAL_LOCATE
+IUN = INFORMATIONAL_UNDIRECTED
+NAV = NAVIGATIONAL
+RDE = RESOURCE_ENTERTAINMENT
+RDO = RESOURCE_DOWNLOAD
+RIN = RESOURCE_INTERACT
+ROB = RESOURCE_OBTAIN
+\end{verbatim}
+\end{multicols}
+}
+
+\end{frame}
+
+
+\begin{frame}[fragile]
+\frametitle{Query 41}
+\vspace{1em}
+
+\emph{rob mills}
+
+\vfill
+
+\begin{table}
+  \centering
+  \begin{tabular}{ l l l l }
+    & \textbf{Amy} & \textbf{Sarah} & \textbf{Martin}\\
+    \toprule
+    Q1 & False & NN & IUN\\
+Q2 & False & NN & IUN\\
+Q3 & False & NY & NAV\\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\vfill
+
+\tiny{
+
+\begin{enumerate}
+\item Is this query best answered with a pin on a map?
+\item Is a location explicit in the query?
+\item What type of query is this?
+\end{enumerate}
+
+\vfill
+
+\begin{multicols}{2}
+\begin{verbatim}
+YY = Yes -- with place name
+YN = Yes -- without place name
+NY = No (but still a place)
+NN = Not applicable 
+     (ie not explicit location and not a place)
+\end{verbatim}
+
+\columnbreak
+\begin{verbatim}
+IAD = INFORMATIONAL_ADVICE
+IDC = INFORMATIONAL_DIRECTED_CLOSED
+IDO = INFORMATIONAL_DIRECTED_OPEN
+ILI = INFORMATIONAL_LIST
+ILO = INFORMATIONAL_LOCATE
+IUN = INFORMATIONAL_UNDIRECTED
+NAV = NAVIGATIONAL
+RDE = RESOURCE_ENTERTAINMENT
+RDO = RESOURCE_DOWNLOAD
+RIN = RESOURCE_INTERACT
+ROB = RESOURCE_OBTAIN
+\end{verbatim}
+\end{multicols}
+}
+
+\end{frame}
+
+
+\begin{frame}[fragile]
+\frametitle{Query 42}
+\vspace{1em}
+
+\emph{Real Estate}
+
+\vfill
+
+\begin{table}
+  \centering
+  \begin{tabular}{ l l l l }
+    & \textbf{Amy} & \textbf{Sarah} & \textbf{Martin}\\
+    \toprule
+    Q1 & False & NY & IUN\\
+Q2 & False & NY & ILI\\
+Q3 & False & NN & NAV\\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\vfill
+
+\tiny{
+
+\begin{enumerate}
+\item Is this query best answered with a pin on a map?
+\item Is a location explicit in the query?
+\item What type of query is this?
+\end{enumerate}
+
+\vfill
+
+\begin{multicols}{2}
+\begin{verbatim}
+YY = Yes -- with place name
+YN = Yes -- without place name
+NY = No (but still a place)
+NN = Not applicable 
+     (ie not explicit location and not a place)
+\end{verbatim}
+
+\columnbreak
+\begin{verbatim}
+IAD = INFORMATIONAL_ADVICE
+IDC = INFORMATIONAL_DIRECTED_CLOSED
+IDO = INFORMATIONAL_DIRECTED_OPEN
+ILI = INFORMATIONAL_LIST
+ILO = INFORMATIONAL_LOCATE
+IUN = INFORMATIONAL_UNDIRECTED
+NAV = NAVIGATIONAL
+RDE = RESOURCE_ENTERTAINMENT
+RDO = RESOURCE_DOWNLOAD
+RIN = RESOURCE_INTERACT
+ROB = RESOURCE_OBTAIN
+\end{verbatim}
+\end{multicols}
+}
+
+\end{frame}
+
+
+\begin{frame}[fragile]
+\frametitle{Query 43}
+\vspace{1em}
+
+\emph{Keyboards}
+
+\vfill
+
+\begin{table}
+  \centering
+  \begin{tabular}{ l l l l }
+    & \textbf{Amy} & \textbf{Sarah} & \textbf{Martin}\\
+    \toprule
+    Q1 & False & NN & IUN\\
+Q2 & False & NY & IUN\\
+Q3 & True & NY & ILO\\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\vfill
+
+\tiny{
+
+\begin{enumerate}
+\item Is this query best answered with a pin on a map?
+\item Is a location explicit in the query?
+\item What type of query is this?
+\end{enumerate}
+
+\vfill
+
+\begin{multicols}{2}
+\begin{verbatim}
+YY = Yes -- with place name
+YN = Yes -- without place name
+NY = No (but still a place)
+NN = Not applicable 
+     (ie not explicit location and not a place)
+\end{verbatim}
+
+\columnbreak
+\begin{verbatim}
+IAD = INFORMATIONAL_ADVICE
+IDC = INFORMATIONAL_DIRECTED_CLOSED
+IDO = INFORMATIONAL_DIRECTED_OPEN
+ILI = INFORMATIONAL_LIST
+ILO = INFORMATIONAL_LOCATE
+IUN = INFORMATIONAL_UNDIRECTED
+NAV = NAVIGATIONAL
+RDE = RESOURCE_ENTERTAINMENT
+RDO = RESOURCE_DOWNLOAD
+RIN = RESOURCE_INTERACT
+ROB = RESOURCE_OBTAIN
+\end{verbatim}
+\end{multicols}
+}
+
+\end{frame}
+
+
+\begin{frame}[fragile]
+\frametitle{Query 44}
+\vspace{1em}
+
+\emph{sculpture sydney}
+
+\vfill
+
+\begin{table}
+  \centering
+  \begin{tabular}{ l l l l }
+    & \textbf{Amy} & \textbf{Sarah} & \textbf{Martin}\\
+    \toprule
+    Q1 & False & YY & IUN\\
+Q2 & True & YY & ILI\\
+Q3 & True & YY & ILI\\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\vfill
+
+\tiny{
+
+\begin{enumerate}
+\item Is this query best answered with a pin on a map?
+\item Is a location explicit in the query?
+\item What type of query is this?
+\end{enumerate}
+
+\vfill
+
+\begin{multicols}{2}
+\begin{verbatim}
+YY = Yes -- with place name
+YN = Yes -- without place name
+NY = No (but still a place)
+NN = Not applicable 
+     (ie not explicit location and not a place)
+\end{verbatim}
+
+\columnbreak
+\begin{verbatim}
+IAD = INFORMATIONAL_ADVICE
+IDC = INFORMATIONAL_DIRECTED_CLOSED
+IDO = INFORMATIONAL_DIRECTED_OPEN
+ILI = INFORMATIONAL_LIST
+ILO = INFORMATIONAL_LOCATE
+IUN = INFORMATIONAL_UNDIRECTED
+NAV = NAVIGATIONAL
+RDE = RESOURCE_ENTERTAINMENT
+RDO = RESOURCE_DOWNLOAD
+RIN = RESOURCE_INTERACT
+ROB = RESOURCE_OBTAIN
+\end{verbatim}
+\end{multicols}
+}
+
+\end{frame}
+
+
+\begin{frame}[fragile]
+\frametitle{Query 45}
+\vspace{1em}
+
+\emph{nsw transport}
+
+\vfill
+
+\begin{table}
+  \centering
+  \begin{tabular}{ l l l l }
+    & \textbf{Amy} & \textbf{Sarah} & \textbf{Martin}\\
+    \toprule
+    Q1 & False & YY & NAV\\
+Q2 & False & NN & RIN\\
+Q3 & False & YY & NAV\\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\vfill
+
+\tiny{
+
+\begin{enumerate}
+\item Is this query best answered with a pin on a map?
+\item Is a location explicit in the query?
+\item What type of query is this?
+\end{enumerate}
+
+\vfill
+
+\begin{multicols}{2}
+\begin{verbatim}
+YY = Yes -- with place name
+YN = Yes -- without place name
+NY = No (but still a place)
+NN = Not applicable 
+     (ie not explicit location and not a place)
+\end{verbatim}
+
+\columnbreak
+\begin{verbatim}
+IAD = INFORMATIONAL_ADVICE
+IDC = INFORMATIONAL_DIRECTED_CLOSED
+IDO = INFORMATIONAL_DIRECTED_OPEN
+ILI = INFORMATIONAL_LIST
+ILO = INFORMATIONAL_LOCATE
+IUN = INFORMATIONAL_UNDIRECTED
+NAV = NAVIGATIONAL
+RDE = RESOURCE_ENTERTAINMENT
+RDO = RESOURCE_DOWNLOAD
+RIN = RESOURCE_INTERACT
+ROB = RESOURCE_OBTAIN
+\end{verbatim}
+\end{multicols}
+}
+
+\end{frame}
+
+
+\begin{frame}[fragile]
+\frametitle{Query 46}
+\vspace{1em}
+
+\emph{taxation act meaning}
+
+\vfill
+
+\begin{table}
+  \centering
+  \begin{tabular}{ l l l l }
+    & \textbf{Amy} & \textbf{Sarah} & \textbf{Martin}\\
+    \toprule
+    Q1 & False & NN & IDC\\
+Q2 & False & NN & IDC\\
+Q3 & False & NN & IDC\\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\vfill
+
+\tiny{
+
+\begin{enumerate}
+\item Is this query best answered with a pin on a map?
+\item Is a location explicit in the query?
+\item What type of query is this?
+\end{enumerate}
+
+\vfill
+
+\begin{multicols}{2}
+\begin{verbatim}
+YY = Yes -- with place name
+YN = Yes -- without place name
+NY = No (but still a place)
+NN = Not applicable 
+     (ie not explicit location and not a place)
+\end{verbatim}
+
+\columnbreak
+\begin{verbatim}
+IAD = INFORMATIONAL_ADVICE
+IDC = INFORMATIONAL_DIRECTED_CLOSED
+IDO = INFORMATIONAL_DIRECTED_OPEN
+ILI = INFORMATIONAL_LIST
+ILO = INFORMATIONAL_LOCATE
+IUN = INFORMATIONAL_UNDIRECTED
+NAV = NAVIGATIONAL
+RDE = RESOURCE_ENTERTAINMENT
+RDO = RESOURCE_DOWNLOAD
+RIN = RESOURCE_INTERACT
+ROB = RESOURCE_OBTAIN
+\end{verbatim}
+\end{multicols}
+}
+
+\end{frame}
+
+
+\begin{frame}[fragile]
+\frametitle{Query 47}
+\vspace{1em}
+
+\emph{taronga zo}
+
+\vfill
+
+\begin{table}
+  \centering
+  \begin{tabular}{ l l l l }
+    & \textbf{Amy} & \textbf{Sarah} & \textbf{Martin}\\
+    \toprule
+    Q1 & False & YY & IUN\\
+Q2 & True & YY & ILO\\
+Q3 & True & YY & ILO\\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\vfill
+
+\tiny{
+
+\begin{enumerate}
+\item Is this query best answered with a pin on a map?
+\item Is a location explicit in the query?
+\item What type of query is this?
+\end{enumerate}
+
+\vfill
+
+\begin{multicols}{2}
+\begin{verbatim}
+YY = Yes -- with place name
+YN = Yes -- without place name
+NY = No (but still a place)
+NN = Not applicable 
+     (ie not explicit location and not a place)
+\end{verbatim}
+
+\columnbreak
+\begin{verbatim}
+IAD = INFORMATIONAL_ADVICE
+IDC = INFORMATIONAL_DIRECTED_CLOSED
+IDO = INFORMATIONAL_DIRECTED_OPEN
+ILI = INFORMATIONAL_LIST
+ILO = INFORMATIONAL_LOCATE
+IUN = INFORMATIONAL_UNDIRECTED
+NAV = NAVIGATIONAL
+RDE = RESOURCE_ENTERTAINMENT
+RDO = RESOURCE_DOWNLOAD
+RIN = RESOURCE_INTERACT
+ROB = RESOURCE_OBTAIN
+\end{verbatim}
+\end{multicols}
+}
+
+\end{frame}
+
+
+\begin{frame}[fragile]
+\frametitle{Query 48}
+\vspace{1em}
+
+\emph{pain in neck vertebrae}
+
+\vfill
+
+\begin{table}
+  \centering
+  \begin{tabular}{ l l l l }
+    & \textbf{Amy} & \textbf{Sarah} & \textbf{Martin}\\
+    \toprule
+    Q1 & False & NN & IUN\\
+Q2 & False & NN & IUN\\
+Q3 & False & NN & IAD\\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\vfill
+
+\tiny{
+
+\begin{enumerate}
+\item Is this query best answered with a pin on a map?
+\item Is a location explicit in the query?
+\item What type of query is this?
+\end{enumerate}
+
+\vfill
+
+\begin{multicols}{2}
+\begin{verbatim}
+YY = Yes -- with place name
+YN = Yes -- without place name
+NY = No (but still a place)
+NN = Not applicable 
+     (ie not explicit location and not a place)
+\end{verbatim}
+
+\columnbreak
+\begin{verbatim}
+IAD = INFORMATIONAL_ADVICE
+IDC = INFORMATIONAL_DIRECTED_CLOSED
+IDO = INFORMATIONAL_DIRECTED_OPEN
+ILI = INFORMATIONAL_LIST
+ILO = INFORMATIONAL_LOCATE
+IUN = INFORMATIONAL_UNDIRECTED
+NAV = NAVIGATIONAL
+RDE = RESOURCE_ENTERTAINMENT
+RDO = RESOURCE_DOWNLOAD
+RIN = RESOURCE_INTERACT
+ROB = RESOURCE_OBTAIN
+\end{verbatim}
+\end{multicols}
+}
+
+\end{frame}

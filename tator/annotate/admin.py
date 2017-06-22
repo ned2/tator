@@ -18,7 +18,8 @@ def linkify(url, text):
 class QueryAdmin(admin.ModelAdmin):
     list_display = [
         'text',
-        'count'
+        'count',
+        'collection',
     ]
 
 class AnnotationAdmin(admin.ModelAdmin):
@@ -64,7 +65,25 @@ class HtmlMessageAdmin(admin.ModelAdmin):
     ]
 
 
+# Create proxy classes and corresponding admins for each different query
+# collection we want to show in the interface.
+
+class PilotQuery(Query):
+    class Meta:
+        verbose_name_plural = "pilot queries"
+        proxy = True
+
+        
+class PilotQueryAdmin(QueryAdmin):
+    def get_queryset(self, request):
+        return self.model.objects.filter(collection='pilot')
+
+    
+
+
 admin.site.register(Query, QueryAdmin)
+admin.site.register(PilotQuery, PilotQueryAdmin)
+
 admin.site.register(Annotation, AnnotationAdmin)
 admin.site.register(UserResponse, UserResponseAdmin)
 admin.site.register(Skipped, SkippedAdmin)

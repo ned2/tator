@@ -9,9 +9,9 @@ class Query(models.Model):
 
     text = models.CharField(max_length=300)
     count = models.IntegerField() 
-
+    collection = models.CharField(max_length=50) 
+    
     class Meta:
-        app_label = "annotate"
         verbose_name_plural = "queries"
 
     def __str__(self):
@@ -119,9 +119,6 @@ class Annotation(models.Model):
             self.query_type,
         )
 
-    # class Meta:
-    #     app_label = "annotate"
-        
     
 class Skipped(models.Model):
     description = models.TextField()

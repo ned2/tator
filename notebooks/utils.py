@@ -1,9 +1,11 @@
 import os
 import sys
+import csv
 from collections import Counter, defaultdict
 
 import pandas as pd
 from statsmodels.stats.inter_rater import aggregate_raters, fleiss_kappa
+from pptx import Presentation
 
 # configure Django so we can use models from the annotate app 
 sys.path.append('/home/nejl/Dropbox/projects/tator/repo/tator')
@@ -14,7 +16,15 @@ django.setup()
 from django.contrib.auth.models import User
 
 from annotate.models import Query, Annotation, UserResponse
+from templates import slide_template
 
+
+# TODO: need to add sampling method that samples equally from dividing the
+# probability mass of the distribution into thirds: top most frequent, middle,
+# and bottom.
+
+# TODO: fix analysis to have a global collection filter and then make sure adding
+# annotations to queries in a different collection does not change the results 
 
 def import_queries(path, sample='first', limit=None):    
     with open(path) as csvfile:
@@ -169,4 +179,82 @@ def show_agreement(question_num, users, skip_agree=True):
     ]
 
     return "\n".join(start + lines)
+
+
+def get_results(users):
+    queries = Query.objects.exclude(responses__skipped__isnull=False).distinct()
+    queries = sorted(queries, key=lambda x:x.pk)
+    users.sort()
+    
+    rest_cols = ["Q{}_{}".format(num, user) for user in users for num in (1,2,3)]
+    header = ["id"] + rest_cols
+    rows = [header]
+    
+    for query in queries:
+        row = [query.pk, query.text]
+        responses = query.responses.order_by('user__username')
+        for response in responses:
+            row.append(response.annotation.get_question(1))
+            row.append(response.annotation.get_question(2))
+            row.append(response.annotation.get_question(3))
+        rows.append(row)
+    return rows
+
+
+def export_results_csv(users, outfile='annotations.csv'):
+    results = get_results(users)
+    with open(outfile, 'w', encoding='utf8', newline='') as csvfile:
+        writer = csv.writer(csvfile, delimiter=',')
+        writer.writerows(rows)
+
+        
+def make_slides_latex(users, csv=None, outfile='slides/slides.tex'):
+    if csv is None:
+        results = get_results(users)
+    else:
+        with open(csv, encoding='utf8') as csvfile:
+            results = list(csv.reader(csvfile))
+
+    lines = []
+    header = results[0]    
+    for i, query in enumerate(results[1:]):
+        row1 = "Q1 & " + " & ".join(str(x) for x in query[2:5]) + r"\\"
+        row2 = "Q2 & " + " & ".join(str(x) for x in query[5:8])  + r"\\"
+        row3 = "Q3 & " + " & ".join(str(x) for x in query[8:11])  + r"\\"
+        rows = "\n".join([row1, row2, row3])
+        title = "Query {}".format(i+1)
+        slide = slide_template.format(title=title, query=query[1], rows=rows)
+        lines.append(slide)
+        
+    with open(outfile, 'w', encoding='utf8') as texfile:
+        texfile.write('\n'.join(lines))
+
+
+def make_slides_pptx(users, csv=None):
+    """Not finished. Used latex instead"""
+    if csv is None:
+        results = get_results(users)
+    else:
+        with open(csv, encoding='utf8') as csvfile:
+            results = list(csv.reader(csvfile))
+            
+    header = results[0]
+
+    prs = Presentation()
+    slide_layout = prs.slide_layouts[1]
+        
+    for i, query in enumerate(results[1:]):
+        slide = prs.slides.add_slide(slide_layout)
+        slide.shapes.title.text = 'Query {}'.format(i+1)
+
+        body_shape = slide.shapes.placeholders[1]
+        tf = body_shape.text_frame
+
+        p = tf.paragraphs[0]
+        p.text = query[1]
+        p.level = 0
+        
+
+    prs.save('test.pptx')
+
     

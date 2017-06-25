@@ -46,7 +46,8 @@ class Annotation(models.Model):
     RESOURCE_ENTERTAINMENT = 'RDE'
     RESOURCE_INTERACT = 'RIN'
     RESOURCE_OBTAIN = 'ROB'
-
+    RESOURCE_MAP = 'RMA'
+    
     QUERY_TYPE_CHOICES = (
         #('', 'Please select a query type'),
         (NAVIGATIONAL, 'Web Navigation'),
@@ -63,6 +64,7 @@ class Annotation(models.Model):
         (RESOURCE_ENTERTAINMENT, 'Entertainment'),
         (RESOURCE_INTERACT, 'Interact'),
         (RESOURCE_OBTAIN, 'Obtain'),
+        (RESOURCE_MAP, 'Map'),
     )
 
     BOOL_CHOICES = ((True, 'Yes'), (False, 'No'))

@@ -42,5 +42,6 @@ $(document).ready(function(){
     $('.radio [for="id_query_type7"]').attr({'title':'"My goal is to download a resource that must be on my computer or other device to be useful" Examples: "Word", "firefox".'});    
     $('.radio [for="id_query_type8"]').attr({'title':'"My goal is to be entertained simply by viewing items available on the result page " Examples: "weather cam mt buller", "tour the france live".'});    
     $('.radio [for="id_query_type9"]').attr({'title':'"My goal is to interact with a resource using another program/service available on the web site I find " Examples: "weather sydney", "flights".'});    
-    $('.radio [for="id_query_type10"]').attr({'title':'"My goal is to obtain a resource that does not require a computer to use. I may print it out, but I can also just look at it on the screen. I\'m not obtaining it to learn some information, but because I want to use the resource itself". Example: "harry potter 2 pdf".'});    
+    $('.radio [for="id_query_type10"]').attr({'title':'"My goal is to obtain a resource that does not require a computer to use. I may print it out, but I can also just look at it on the screen. I\'m not obtaining it to learn some information, but because I want to use the resource itself". Example: "harry potter 2 pdf".'});
+    $('.radio [for="id_query_type11"]').attr({'title':'"My goal is to be able to explore a map of an area. I do do not want a specific location, or list of locations, but rather, want to view a particular region.".'});
 });

@@ -23,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'm0=_^jxmvau1_5i1r67j0@31-)4%3$r+gqjjipwie4z70_41x&'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['nedned.cis.unimelb.edu.au', 'localhost']
 

@@ -26,13 +26,71 @@ from templates import slide_template
 # TODO: fix analysis to have a global collection filter and then make sure adding
 # annotations to queries in a different collection does not change the results 
 
-def import_queries(path, sample='first', limit=None):    
+def split_data_frame_by_prob(df, column, nbins):
+    # splits a dataframe into 'nbins' of equal probability mass
+    # using column specified by 'coilumn'
+
+    df = df.sort_values(column, ascending=False)
+    values = df[column]
+    
+    bin_probability = 1/nbins
+    total = sum(values)
+    cutoffs = []
+    cumulative_total = 0 
+    next_bin_probability = bin_probability
+    
+    for i, count in enumerate(values):
+        cumulative_total += count
+
+        if cumulative_total/total < next_bin_probability:
+            continue
+
+        cutoffs.append(i)
+        next_bin_probability += bin_probability
+
+    start = 0
+    new_dfs = []
+    while cutoffs:
+        cutoff = cutoffs.pop(0)
+        if len(cutoffs) == 0:
+            # last item; get the rest
+            new_dfs.append(df[start:])
+        else:
+            new_dfs.append(df[start:cutoff])
+        start = cutoff
+
+    return new_dfs
+
+
+def load_queries(path):
     with open(path) as csvfile:
         df = pd.read_csv(csvfile, delimiter=';')
+    return df
+    
 
-        # filter out queries with length less than 2 characters long
-        df = df[df['querystring'].str.len() > 1]
-        
+def clean_queries(df):
+    """Returns the input DataFrame of queries cleaned"""
+    # filter out queries with length less than 2 characters long
+    df = df[df['querystring'].str.len() > 1]
+    return df
+
+
+def split_num(num, splits):
+    """Returns the number 'num' divided into a list of numbers of size 'splits' """
+    splits = [int(num/splits)+1]*(num%splits) + [int(num/splits)]*(splits-num%splits)
+    assert sum(splits) == num
+    return splits
+
+
+def import_queries(path, collection, sample='first', limit=None, allow_dupes=False): 
+    df = load_queries(path)
+    df = clean_queries(df)
+    
+    if not allow_dupes:
+        # remove existing queries from candidate queries to sample
+        existing = [query.text for query in Query.objects.all()]
+        df = df[~df['querystring'].isin(existing)]
+
     if limit is not None:
         if sample == 'first':
             df = df[:limit]
@@ -40,13 +98,22 @@ def import_queries(path, sample='first', limit=None):
             df = df.sample(limit)
         elif sample == 'proportional':
             df = df.sample(limit, weights='countqstring')
+        elif sample == 'split':
+            split_size = 3
+            splits = split_data_frame_by_prob(df, 'countqstring', split_size)
+            sizes = split_num(limit, split_size)
+            sub_samples = []
+            for size, split_df in zip(sizes, splits): 
+                sub_samples.append(split_df.sample(size, weights='countqstring'))
+            df = pd.concat(sub_samples)
+            assert len(df) == limit
         else:
             print('Unknown sampling method')
             return
 
     for i, values in enumerate(df.values.tolist()):
          text, count = values
-         Query.objects.create(text=text, count=count)
+         Query.objects.create(text=text, count=count, collection=collection)
 
     print("Added {} queries to the database.\n".format(i+1))
     print(df.describe())
@@ -187,7 +254,7 @@ def get_results(users):
     users.sort()
     
     rest_cols = ["Q{}_{}".format(num, user) for user in users for num in (1,2,3)]
-    header = ["id"] + rest_cols
+    header = ['id', 'query'] + rest_cols
     rows = [header]
     
     for query in queries:
@@ -205,7 +272,7 @@ def export_results_csv(users, outfile='annotations.csv'):
     results = get_results(users)
     with open(outfile, 'w', encoding='utf8', newline='') as csvfile:
         writer = csv.writer(csvfile, delimiter=',')
-        writer.writerows(rows)
+        writer.writerows(results)
 
         
 def make_slides_latex(users, csv=None, outfile='slides/slides.tex'):
@@ -218,9 +285,9 @@ def make_slides_latex(users, csv=None, outfile='slides/slides.tex'):
     lines = []
     header = results[0]    
     for i, query in enumerate(results[1:]):
-        row1 = "Q1 & " + " & ".join(str(x) for x in query[2:5]) + r"\\"
-        row2 = "Q2 & " + " & ".join(str(x) for x in query[5:8])  + r"\\"
-        row3 = "Q3 & " + " & ".join(str(x) for x in query[8:11])  + r"\\"
+        row1 = r"Q1 & {} & {} & {}\\".format(query[2], query[5], query[8])
+        row2 = r"Q2 & {} & {} & {}\\".format(query[3], query[6], query[9])
+        row3 = r"Q3 & {} & {} & {}\\".format(query[4], query[7], query[10])
         rows = "\n".join([row1, row2, row3])
         title = "Query {}".format(i+1)
         slide = slide_template.format(title=title, query=query[1], rows=rows)
@@ -256,5 +323,3 @@ def make_slides_pptx(users, csv=None):
         
 
     prs.save('test.pptx')
-
-    

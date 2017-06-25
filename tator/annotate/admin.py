@@ -72,17 +72,24 @@ class PilotQuery(Query):
     class Meta:
         verbose_name_plural = "pilot queries"
         proxy = True
-
-        
 class PilotQueryAdmin(QueryAdmin):
     def get_queryset(self, request):
         return self.model.objects.filter(collection='pilot')
 
     
+class Round1Query(Query):
+    class Meta:
+        verbose_name_plural = "round 1 queries"
+        proxy = True
+class Round1QueryAdmin(QueryAdmin):
+    def get_queryset(self, request):
+        return self.model.objects.filter(collection='round1')
+    
 
 
 admin.site.register(Query, QueryAdmin)
 admin.site.register(PilotQuery, PilotQueryAdmin)
+admin.site.register(Round1Query, Round1QueryAdmin)
 
 admin.site.register(Annotation, AnnotationAdmin)
 admin.site.register(UserResponse, UserResponseAdmin)

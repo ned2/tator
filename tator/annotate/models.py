@@ -6,9 +6,8 @@ from django.db.models.signals import post_delete
 
 
 class Query(models.Model):
-
     text = models.CharField(max_length=300)
-    count = models.IntegerField() 
+    count = models.IntegerField()
     collection = models.CharField(max_length=50) 
     
     class Meta:
